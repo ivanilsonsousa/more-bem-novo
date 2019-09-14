@@ -274,7 +274,7 @@ function callback(data) {
 
 function montaTabela(content, obj, collumns) {
 	console.log(Object.keys(obj[0]).length)
-
+	let ja = false
 	this.obj = obj;
 	this.content = document.getElementsByClassName(content);
 	this.collumns = collumns;
@@ -284,19 +284,22 @@ function montaTabela(content, obj, collumns) {
 
 	this.content[0].appendChild(this.table)
 	this.table.innerHTML = '';
+	this.thead.innerHTML = '';
+	this.tbody.innerHTML = '';
 
 	this.table.appendChild(this.thead)
 	this.table.appendChild(this.tbody)
 	let cabecalho = ''
 	let corpo = ''
 	
-	if (this.collumns != undefined) {
+	if ((this.collumns != undefined) && (!ja)) {
 		for (const value of this.collumns) {
 			cabecalho += '<th>' + value + '</th>';
 		}
 		cabecalho += '<th>Ações</th>';
 		this.thead.innerHTML += cabecalho;
 		this.thead.innerHTML += '</tr>';
+		ja = true
 	}
 
 	this.obj.forEach((e) => {
