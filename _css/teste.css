@@ -1,0 +1,155 @@
+*{
+	padding: 0;
+	margin: 0;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+}
+
+.corpo{
+  margin: 8% 0;
+}
+
+.corpo fieldset{
+  /* min-width: 700px; */
+  height: 500px;
+  padding: 0 20px;
+  border: 1px #888 solid;
+  /* margin-bottom: 5%; */
+}
+
+.corpo legend{
+	width: auto;
+  font-family: 'Nunito', sans-serif;
+  font-size: 18pt;
+	font-weight: bold;
+}
+
+/* BARRA PESQUISA */
+.barra-pesquisa{
+  margin: 0px 10px;
+  padding: 0px 10px;
+	/* width: 93%; */
+
+	position: relative;
+	margin: auto auto;
+
+  height: 60px;
+  width: 98%;
+  border: 1px #888 solid;
+  border-radius: 4px;
+	background-color: #343A40;
+}
+
+/*FIM BARRA PESQUISA*/
+
+/* ---- BLOCO PESQUISA ---- */
+
+.bloco-pesquisa {
+  box-sizing: border-box;
+  margin: auto 0;
+	float: left;
+	width: 25%;
+	height: 35px;
+	border: 1px solid #ccc;
+	background: #fff;
+
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.bloco-pesquisa input[type='text'] {
+	float: left;
+	width: 85%;
+	height: 100%;
+	padding: 0px 10px;
+	border: none;
+}
+
+.bloco-pesquisa button {
+	float: left;
+	width: 15%;
+	height: 100%;
+	border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.bloco-pesquisa i{
+	margin: auto;
+}
+
+#div-pesquisa{
+  position: relative;
+  top: -47px;
+  left: 50px;
+}
+
+/* FIM BLOCO PESQUISA */
+
+/* ----BOTAO---- */
+.btn{
+  margin-right: 15%;
+  min-width: 100px;
+  background: #fff;
+  border: 1px #ccc solid;
+  border-radius: 5px;
+  width: 10%;
+  height: 35px;
+
+  position: relative;
+	top: -47px;
+  left: 60%;
+}
+
+.btn:hover{
+  background-color: #ccc;
+}
+
+.btn label{
+  cursor: pointer;
+  font-size: 9px;
+  position: relative;
+  top: -20px;
+}
+
+.btn i{
+  cursor: pointer;
+  position: relative;
+  top: -8px;
+  /* left: 43px; */
+}
+/* FIM BOTAO */
+
+/* TABELA DE FORNECEDORES */
+
+.tabela{
+	height: 62%;
+	position: relative;
+	top: 0px;
+	left: 5px;
+}
+
+.tabela table {
+  width: 98%;
+	height: 90%;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	position: relative;
+	margin: auto auto;
+	text-align: center;
+}
+
+.tabela i{
+	margin: auto;
+}
+
+.tabela td{
+	font-weight: normal;
+}
+.tabela thead{
+  opacity: 0.9;
+}
+/* FIM TABELA DE FORNECEDORES */

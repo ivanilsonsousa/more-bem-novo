@@ -1,0 +1,95 @@
+fieldset {
+	width: 500px;
+	padding: 10px;
+	margin: auto auto auto auto;
+}
+
+input {
+	height: 30px;
+	width: 360px;
+	margin: 10px;
+	position: left;
+	border-radius: 5px;
+	border: 1px solid black;
+	font-size: 14pt;
+	padding: 0px 10px;
+	outline: none;
+}
+
+input[type=submit]{
+	cursor: pointer;
+}
+
+body {
+	font-family: arial;
+	font-size: 10pt;
+}
+
+legend {
+	font-size: 16pt;
+	font-weight: bold;
+}
+
+#legenda-end, #legenda-dados-login {
+	font-size: 13pt;
+
+}
+
+#campo-cadastro {
+	padding: 20px;
+}
+
+.form-interno {
+	margin: 20px 0px;
+	width: 500px;
+}
+
+#rua {
+	width: 220px;
+}
+
+#num {
+	width: 100px;
+}
+
+#cep {
+	width: 180px;
+}
+
+#tel {
+	width: 130px;
+}
+
+#rsocial {
+	width: 280px;
+}
+
+#idforn {
+	width: 40px;
+	background-color: rgba(0.5, 0.1, 0.3, 0.2);
+}
+
+#cnpj {
+	width: 427px;
+}
+
+#botao {
+	font-size: 13pt;
+	width: 80px;
+	position: relative;
+	left: 435px;
+	margin: 10px 10px;
+}
+
+#email{
+	width: 420px;
+	background-color: rgba(0.5, 0.1, 0.3, 0.2);
+}
+
+#senha {
+	width: 415px;
+}
+
+#rsenha {
+	width: 368px;
+}

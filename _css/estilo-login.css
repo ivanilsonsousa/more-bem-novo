@@ -1,0 +1,161 @@
+* {
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	box-sizing: border-box;
+	font-family: arial;
+	font-size: 10pt;
+}
+
+.relative-parent {
+	margin: auto;
+	width: 350px;
+	height: 200px;
+	padding: 10px;
+	border: 1px #888 solid;
+	position: relative;
+	top: -140px;
+	left: 25%;
+}
+
+.blocoIcones {
+	display: block;
+	float: left;
+	border: none;
+	margin: 20px;
+	width: 200px;
+	height: 100%;
+}
+
+.blocoIcones input[type='text'], input[type='password']{
+	float: left;
+	width: 100%;
+	height: 35px;
+	padding: 0px 30px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+svg{ width: 25px; height: 25px; }
+
+.blocoIcones button:hover svg{ fill: #000; }
+
+a {
+	font-size: 10px;
+	width: 100px;
+}
+
+img {
+    max-width: 290px;
+    width: auto;
+}
+
+#site {
+	width: 700px;
+	height: 250px;
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#imagem {
+	width: 290px;
+	position: relative;
+	top: 50px;
+}
+
+#man, #lock{
+	position: relative;
+	top: -25px;
+	left: 10px;
+}
+
+#lock{
+	position: relative;
+	top: -33px;
+	left: 10px;
+}
+
+#olho {
+	cursor: pointer;
+	position: relative;
+	width: 20px;
+	height: 20px;
+	top: -27px;
+	left: 185px;
+}
+
+#div-user {
+	position: relative;
+	width: 230px;
+	left: 60px;
+	top: -15px;
+}
+
+#div-senha {
+	position: relative;
+	width: 240px;
+	left: 50px;
+	top: -55px;
+}
+
+#legenda {
+	font-size: 16pt;
+	font-weight: bold;
+}
+
+#label-user {
+	position: relative;
+	right: 260px;
+	top: 15px;
+}
+
+#label-senha {
+	position: relative;
+	right: 260px;
+	top: 50px;
+}
+
+#botao {
+	cursor: pointer;
+  	background-color: #3c4888;
+	border-radius: 5px;
+	margin: 10px 10px;
+	width: 80px;
+	height: 25px;
+	color: white;
+	position: relative;
+	top: -95px;
+	left: 220px;
+}
+
+#esqueceu {
+	position: relative;
+	top: -30px;
+	left: 70px;
+}
+
+#cad-form {
+	position: relative;
+	right: 0px;
+	top: 50px;
+}
+
+#div-links {
+	width: 250px;
+	position: relative;
+	top: -95px;
+}
+
+footer{
+	position: absolute;
+	bottom: 20px;
+	width: 100%;
+}
+
+span{
+	width: auto;
+	position: relative;
+	left: 38%;
+}

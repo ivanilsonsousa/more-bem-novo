@@ -1,0 +1,50 @@
+fieldset {
+	width: auto;
+	height: 550px;
+	padding: 10px;
+	margin: auto auto auto auto;
+}
+
+table {
+	padding: 10px;
+	width: 1300px;
+	border: 1px solid black;
+	border-radius: 10px;
+	position: relative;
+	margin: auto auto;
+}
+
+td, tr {
+	text-align: center;
+}
+
+input {
+	height: 30px;
+	width: 360px;
+	margin: 10px;
+	position: left;
+	border-radius: 5px;
+	border: 1px solid black;
+	font-size: 14pt;
+	padding: 0px 10px;
+	outline: none;
+}
+
+h2 {
+	text-align: center;
+	margin: 10px 0px;
+}
+
+input[type=submit]{
+	cursor: pointer;
+}
+
+body {
+	font-family: arial;
+	font-size: 10pt;
+}
+
+legend {
+	font-size: 16pt;
+	font-weight: bold;
+}

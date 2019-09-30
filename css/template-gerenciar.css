@@ -1,0 +1,211 @@
+@import url('geral.css');
+.div-dados-gerenciar {
+	width: 100%;
+	display: flex;
+	align-items: flex-end;
+	color: #073999;
+	margin-bottom: 0;
+}
+.div-dados-gerenciar h1 {
+	margin: 0;
+	font-size: 45px;
+	color: black;
+	font-weight: 100;
+}
+.div-dados-gerenciar i {
+	margin: 0 10px;
+}
+.div-dados-gerenciar img {
+	height: 100px;
+	margin: 0 20px;
+}
+.paragrafo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.paragrafo p {
+	font-weight: bold;
+	font-size: 15pt;
+}
+.card:hover {
+	background-color: #4faddb;
+	cursor: pointer;
+}
+.opcoes {
+	width: 90%;
+	display: grid;
+	justify-items: center;
+	align-items: center;
+	text-align: center;
+}
+@media(min-width: 0px) {
+	.dropdown {
+		display: flex;
+	}
+	.autenticacao {
+		display: none;
+	}
+	.opcoes {
+		display: grid;
+		grid-template-columns: 1fr;
+	}
+	.card {
+		width: 90%;
+	}
+	.menu{
+		display: none;
+	}
+	.menu-toggle {
+		display: block;
+		cursor: pointer;
+	}
+	.cabecalho {
+		grid-template-columns: 100px 1fr 50px; 
+	}
+	
+}
+@media(min-width: 650px) {
+	.dropdown {
+		display: none;
+	}
+	.titulo {
+		display: none;
+	}
+	.autenticacao {
+		display: flex;
+	}
+	.menu{
+		display: flex;
+	}
+	.menu-toggle {
+		display: none;
+	}
+	.opcoes {
+		display: grid;
+		justify-content: center;
+		grid-template-columns: 1fr 1fr;
+	}
+	.card {
+		width: 90%;
+	}
+	
+}
+@media(min-width: 900px) {
+	.opcoes {
+		display: grid;
+		justify-content: center;
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+	.card {
+		width: 70%;
+	}
+	.titulo {
+		display: flex;
+	}
+	.cabecalho {
+		grid-template-columns: 100px 150px 1fr 50px;
+	}
+}
+.tabela {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	height: 300px;
+	overflow: scroll;
+}
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 30px;
+}
+th, td {
+	padding: 10px;
+	text-align: center;
+}
+thead tr {
+	color: white;
+	height: 50px;
+	border-bottom: solid 3px var(--borda-suave);
+	background-color: DarkSlateBlue;
+}
+tbody tr:nth-child(even) {background: #ccc}
+tbody tr:nth-child(odd) {background: #fff}
+tbody tr:hover {
+	background-color: SkyBlue;
+}
+.barra-op {
+	height: 70px;
+	width: 100%;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	display: grid;
+	grid-template-columns: 7fr 5fr;
+	align-items: center;
+	padding: 10px;
+	background: MidnightBlue;
+	border-bottom: solid 3px var(--borda-suave);
+}
+.barra-op img {
+	height: 35px;
+}
+.div-pesquisa {
+	margin-left: 10px;
+	height: 50px;
+	width: 100%;
+	display: flex;
+	border-radius: 5px;
+}
+.div-pesquisa input {
+	width: 80%;
+	padding: 15px;
+	border: 1px solid grey;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	background: white;
+	border-color: white;
+	font-size: 14pt;
+}
+.div-pesquisa button,
+.botao button {
+	width: 20%;
+	border: none;
+	cursor: pointer;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	background: slateblue;
+	color: white;
+}
+.botao{
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+.botao button{
+	height: 50px;
+	width: 25%;
+	min-width: 130px;
+	border-radius: 5px;
+	margin-right: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.botao button img{
+	height: 30px;
+	color: white;
+}
+.botao button:hover{
+	background: SteelBlue;
+}
+.div-pesquisa button:hover {
+	background: SteelBlue;
+}
+td > a > i {
+	color: blue;
+}
+td > a {
+	text-decoration: none;
+}

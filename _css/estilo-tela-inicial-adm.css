@@ -1,0 +1,93 @@
+*{
+	padding: 0;
+	margin: 0;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+}
+
+.site {
+  background: #fff;
+	width: 550px;
+	height: 400px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.site fieldset{
+  position: relative;
+  top: -20px;
+  height: 300px;
+  padding: 10px;
+  border: 1px #888 solid;
+  border-radius: 0px;
+}
+
+.site h1{
+	height: 10%;
+	font-size: 25px;
+}
+
+.site legend{
+  font-family: 'Nunito', sans-serif;
+  font-size: 18pt;
+	font-weight: bold;
+}
+
+/* BTN GERAL */
+.btn{
+  position: relative;
+  left: 1.3%;
+  cursor: pointer;
+  background-color: #ffffff;
+  margin: 5px 5px;
+  width: 30%;
+  height: 30%;
+  border: 1px #888 solid;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 100%;
+  padding: 6px 12px;
+}
+
+.btn label{
+  cursor: pointer;
+  margin-top: 6pt;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.btn i{
+  margin-right: 15px;
+}
+
+/* BTN COLORES */
+.btn-primary{
+  border-color: #999999;
+  color: #444444;
+  transition: background 0.3s linear 0s;
+}
+
+.btn-primary:hover{
+  background-color: #ccc;
+  border-color: #ccc;
+	color: black;
+}
+
+.sair{
+	/* border: 1px solid black; */
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+	width: 10%;
+	height: 10%;
+	position: relative;
+	left: 87%;
+	top: -40px;
+	outline: none;
+}
+
+.sair:hover{
+	color: red;
+}

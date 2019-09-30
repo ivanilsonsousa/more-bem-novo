@@ -1,0 +1,236 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    /* background-color: red; */
+    display: grid;
+    height: 100vh;
+    grid-template-rows: 60px 1fr 60px;
+}
+.site {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    height: auto;
+    /* background: red; */
+}
+.cabecalho {
+    /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 38%, rgba(0,212,255,1) 100%); */
+    background: #073999;
+    height: 100%;
+    box-sizing: content-box;
+    display: grid;
+    align-items: center;
+    border-bottom: solid 5px lightblue;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    grid-template-columns: 10px 10px 1fr 50px;
+}
+.logo {
+    height: 60px;
+    /* background: #ccc; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 15px;
+    padding: 10px;
+}
+.logo img {
+    height: 100%;
+}
+.titulo {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+.menu-toggle {
+    display: none;
+    color: #eee;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    height: 100%;
+}
+.menu {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding: 25px;
+}
+.menu ul {
+    font-size: 10pt;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+.menu li {
+    display: inline-block;
+}
+.cabecalho a {
+    text-decoration: none;
+    color: #eee;
+    font-size: 1.3em;
+}
+.menu a {
+    padding: 15px;
+}
+.titulo {
+    height: 60px;
+}
+.autenticacao {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* padding: 15px; */
+    color: white;
+    cursor: pointer;
+}
+.autenticacao img {
+    z-index: 100000;
+}
+.menu a:hover,
+.menu a.selected {
+    border-bottom: 5px solid white;
+}
+.dropdown {
+    display: none;
+}
+.botao {
+    border-radius: 30px;
+    padding: 10px 25px;
+    margin: 10px;
+}
+.destaque {
+    background: #f50a31;
+    font-size: 10pt;
+    color: #fff;
+}
+.rodape {
+    height: 100%;
+    width: 100%;
+    background: #073999;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: Arial, serif;
+    font-weight: bold;
+    color: white;
+}
+.card {
+    display: grid;
+    grid-template-rows: 70% 30%;
+    vertical-align: top;
+    height: 90%;
+    width: 260px;
+    margin: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.3);
+    border-bottom: 5px solid darkblue;
+}
+.paragrafo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.paragrafo p {
+    font-weight: bold;
+    font-size: 15pt;
+}
+.simbolo {
+    height: 100px;
+    padding-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.simbolo img {
+    height: 80px;
+}
+.card:hover {
+    background-color: #4faddb;
+    cursor: pointer;
+}
+.opcoes {
+    width: 90%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+}
+@media(min-width: 0px) {
+    .dropdown {
+        display: flex;
+        /* align-items: center; */
+    }
+    .autenticacao {
+        display: none;
+    }
+    .opcoes {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .card {
+        width: 90%;
+    }
+    .menu{
+        display: none;
+    }
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+    }
+    .cabecalho {
+        grid-template-columns: 100px 1fr 50px; 
+    }
+    
+}
+@media(min-width: 650px) {
+    .dropdown {
+        display: none;
+    }
+    .titulo {
+        display: none;
+    }
+    .autenticacao {
+        display: flex;
+    }
+    .menu{
+        display: flex;
+    }
+    .menu-toggle {
+        display: none;
+    }
+    /* .cabecalho {
+        grid-template-columns: 100px 1fr 50px;
+    } */
+    .opcoes {
+        display: grid;
+        justify-content: center;
+        grid-template-columns: 1fr 1fr;
+    }
+    .card {
+        width: 90%;
+    }
+    
+}
+@media(min-width: 900px) {
+    .opcoes {
+        display: grid;
+        justify-content: center;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .card {
+        width: 70%;
+    }
+    .titulo {
+        display: flex;
+    }
+    .cabecalho {
+        grid-template-columns: 100px 150px 1fr 50px;
+    }
+}

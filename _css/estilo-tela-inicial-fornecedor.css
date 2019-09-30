@@ -1,0 +1,56 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	display: inline;
+	font-family: arial;
+	font-size: 10pt;
+}
+
+fieldset {
+	width: 420px;
+	padding: 10px;
+	margin: 0px 0px;
+	position: relative;
+	top: -50px;
+	left: 680px;
+}
+
+a {
+	font-size: 10pt;
+	position: relative;
+	top: 90px;
+}
+
+#legenda {
+	font-size: 16pt;
+	font-weight: bold;
+}
+
+.botao{
+	height: 100px;
+	width: 100px;
+	border-radius: 10px;
+	margin: 10px 10px;
+	font-size: 10pt;
+	text-align: center;
+	position: relative;
+	cursor: pointer;
+	outline: none;
+	left: 30px;
+}
+
+#saudacao {
+	position: absolute;
+	top: 100px;
+	left: 680px;
+}
+
+#logo{
+	max-width: 290px;
+	position: relative; 
+	left: 330px; /* posiciona a 90px para a esquerda */ 
+	top: 190px; /* posiciona a 70px para baixo */
+}

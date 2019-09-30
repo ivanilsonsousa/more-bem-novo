@@ -1,0 +1,21 @@
+.cabecalho {
+    display: grid;
+    grid-template-columns: 10px 10px 1fr 50px;
+}
+@media(min-width: 845px) {
+    .site {
+        display: grid;
+        /* justify-items: center; */
+        grid-template-columns: 50% 50%;
+    }
+}
+@media(min-width: 0px) {
+    .site {
+        display: grid;
+        grid-template-rows: 50% 50%;
+    }
+    .logo img {
+        position: relative;
+        right: 20px;
+    }
+}

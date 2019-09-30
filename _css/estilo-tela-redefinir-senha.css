@@ -1,0 +1,57 @@
+*{
+	padding: 0;
+	margin: 0;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+}
+
+.site {
+  background: #fff;
+	width: 520px;
+	height: 250px;
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.site fieldset{
+  position: relative;
+  top: -20px;
+  height: 180px;
+  padding: 10px;
+  border: 1px #888 solid;
+  border-radius: 0px;
+}
+
+.site input[type='email']{
+  width: 400px;
+  height: 30px;
+  padding: 0px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-weight: normal;
+}
+
+.site input[type='submit']{
+  border: 1px solid #444;
+  position: relative;
+  left: 400px;
+	top: 20px;
+}
+
+.site label{
+  font-weight: normal;
+  margin-left: 10px;
+  margin-right: 15px;
+}
+
+.site i{
+  margin-right: 15px;
+}
+
+.site legend{
+	width: auto;
+  font-size: 18pt;
+	font-weight: bold;
+}

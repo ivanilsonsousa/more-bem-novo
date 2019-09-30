@@ -1,0 +1,110 @@
+*{
+	padding: 0;
+	margin: 0;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+}
+
+.site {
+  background: #fff;
+	width: 520px;
+	height: auto;
+	position: absolute;
+	top: 55%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.site fieldset{
+  position: relative;
+  top: -20px;
+  height: auto;
+  padding: 10px;
+  border: 1px #888 solid;
+  border-radius: 0px;
+}
+
+.site input[type='text']{
+  outline: none;
+  background-color: #ccc;
+  margin: 10px;
+  width: 350px;
+  height: 30px;
+  padding: 0px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-weight: normal;
+}
+
+.site input[type='submit']{
+  margin-bottom: 20px;
+  border: 1px solid #444;
+  position: relative;
+  left: 340px;
+}
+
+.site label{
+  font-weight: normal;
+  margin-left: 10px;
+  margin-right: 0px;
+}
+
+.site i{
+  margin-right: 15px;
+}
+
+.site legend{
+	width: auto;
+  font-size: 18pt;
+	font-weight: bold;
+}
+
+.form-interno{
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.form-interno legend{
+  font-size: 12pt;
+}
+
+.form-interno input[type='email'], input[type='password'], input[type='number'], input[type='tel']{
+  outline: none;
+  background-color: #ccc;
+  margin: 10px;
+  width: 200px;
+  height: 30px;
+  padding: 0px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-weight: normal;
+}
+
+#cnpj{
+  width: 405px;
+}
+
+#rua{
+  width: 230px;
+}
+
+#cep{
+  width: 170px;
+}
+
+#tel{
+  width: 150px;
+}
+
+#num{
+  width: 80px;
+}
+
+#email{
+  width: 371px;
+}
+
+#senha{
+  width: 365px;
+}

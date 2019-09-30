@@ -1,0 +1,192 @@
+*{
+	padding: 0;
+	margin: 0;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+}
+
+.site {
+  background: #fff;
+	width: 580px;
+	height: auto;
+	position: absolute;
+	top: 80%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.site fieldset{
+  position: relative;
+  top: -20px;
+  height: auto;
+  padding: 10px;
+  border: 1px #888 solid;
+  border-radius: 0px;
+}
+
+.site input[type='text']{
+  margin: 10px;
+  width: 150px;
+  height: 30px;
+  padding: 0px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-weight: normal;
+}
+
+.site input[type='submit']{
+  margin-bottom: 20px;
+  border: 1px solid #444;
+  position: relative;
+  left: 450px;
+}
+
+.site input[type='button']{
+  border: 1px solid #444;
+}
+
+.site label{
+  font-weight: normal;
+  margin-left: 10px;
+  margin-right: 0px;
+}
+
+.site i{
+  margin-right: 15px;
+}
+
+.site legend{
+	width: auto;
+  font-size: 18pt;
+	font-weight: bold;
+}
+
+.form-interno{
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.form-interno legend{
+  font-size: 12pt;
+}
+
+.form-interno input[type='email'], input[type='password'], input[type='number'], input[type='tel'], input[type='date'], select, option{
+  margin: 10px;
+  width: 150px;
+  height: 30px;
+  padding: 0px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-weight: normal;
+}
+
+.site textarea {
+	resize: none;
+	padding: 10px;
+	width: 80%;
+	border-radius: 5px;
+	position: relative;
+	left: 100px;
+	top: -25px;
+  font-weight: normal;
+}
+
+/* TABELA DE ITENS */
+
+.tabela{
+	/* height: 10%; */
+  height: 200px;
+	position: relative;
+	top: 0px;
+}
+
+.tabela table {
+	width: 98%;
+	height: 96%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	position: relative;
+	margin: auto auto;
+	text-align: center;
+}
+
+.tabela td, tr {
+	padding: 0px 10px;
+}
+
+.tabela td{
+	font-weight: normal;
+}
+
+/* FIM TABELA DE ITENS */
+
+#selecionar-item{
+    margin-top: 5px;
+}
+
+#prazo{
+  width: 140px;
+}
+
+#quant{
+  width: 95px;
+}
+
+#titulo{
+  width: 240px;
+}
+
+#marca{
+  width: 168px;
+}
+
+#medida{
+  width: 150px;
+}
+
+#label-quant, #quant{
+  position: relative;
+  left: 0px;
+}
+
+#label-marca, #marca{
+  position: relative;
+  left: 25px;
+}
+
+#botao-cadastrar:hover{
+  color: white;
+  background-color: green;
+}
+
+#botao-inserir{
+  position: relative;
+  left: 400px;
+  margin: 10px;
+}
+
+#seletor{
+  margin: 10px;
+}
+
+#botao-apagar{
+	color: red;
+	cursor: pointer;
+}
+
+#botao-apagar:hover{
+	opacity: 0.7;
+}
+
+#dados-item {
+  height: 300px;
+}
+
+#link-itens {
+    margin-top: 5px;
+    margin-left: 5px;
+    position: relative;
+    top: 20px;
+}
