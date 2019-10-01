@@ -1,9 +1,9 @@
-﻿/* --- Descrição da função preenche() ---
-	Essa função pega o item selecionado no momento
-	da criação de um novo Orçamento no evento de
-	clique do elemento <select> dentro do fieldset
-*/
-
+﻿
+/**
+ * Essa função pega o item selecionado no momento
+ * da criação de um novo Orçamento no evento de
+ * clique do elemento <select> dentro do fieldset
+ */
 function preencher(){
 	let sel = document.getElementById('seletor')
 	let indice = sel.options[sel.selectedIndex + 1].text
@@ -36,9 +36,9 @@ function preencher(){
 	});
 }
 
-/*--- Descrição da função mostrarTexto() ---
-	Essa função exibe o texto da tela de login do campo senha ao clicar no icone de olho.
-*/
+/**
+ * Essa função exibe o texto da tela de login do campo senha ao clicar no icone de olho.
+ */
 function mostrarTexto(){
 	if (document.getElementById('senha').type == 'password') {
 		document.getElementById('senha').type = 'text'
@@ -50,13 +50,6 @@ function mostrarTexto(){
 		img.src = '_imagens/eye-regular.svg'
 	}
 }
-
-// function adicionarItem() {
-// 	let sel = document.getElementById("seletor")
-// 	if(sel.selectedIndex) {
-// 		inserirLinhaTabela()
-// 	}
-// }
 
 function inserirLinhaTabela() {
 	// Responsavel por pegar o valor selecionado no <select>
@@ -94,7 +87,10 @@ function inserirLinhaTabela() {
 	document.getElementById('marca').value = ''
 }
 
-// Função responsável em receber um objeto e extrair as informações necessárias para a remoção da linha.
+/**
+ * Função responsável em receber um objeto e extrair
+ * as informações necessárias para a remoção da linha.
+ */ 
 function removerLinha(obj) {
 	// Capturamos a referência da TR (linha) pai do objeto
 	let objTR = obj.parentNode.parentNode
@@ -151,72 +147,101 @@ function verificaApagar(item){
     // } 
 }
 
+
+
 function ano(){
-	now = new Date()
-	return now.getFullYear()
+	return new Date().getFullYear()
 }
 
-function pop(){
-	$('#pop').addClass('pop-on')
-	$('#pop').css({height: $(document).height()})
+// Janela Modal
+function popup(idModal) {
+	let modal = document.getElementById(idModal)	
+	let exit = document.querySelector(`div[id=${idModal}] > .modal-content > .modal-header > [sair]`)
+	let cancel = document.querySelector(`div[id=${idModal}] > .modal-content > .modal-footer > [cancelar]`)
 	
-	$('#pop').on('click', function(){
-		$('#pop').removeClass('pop-on')
-	})
+	modal.style.display = "block"
+	exit.onclick = () => modal.style.display = "none"
+	cancel.onclick = () => modal.style.display = "none"
+	window.onclick = (e) => { if (e.target == modal) modal.style.display = "none" }
 }
 
-// POPS
-// Get the modal
-var modal = document.getElementById("myModal")
-var btn = document.getElementById("myBtn")
-var cancel = document.getElementById("cancel")
+function editarItem(idItem, idModal) {
+	let modal = document.querySelector(`#${idModal}`)
+	let inputs = modal.querySelectorAll('input')
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0]
+	$.ajax({
+		type: "GET",
+		url: "_controles/get-dados.php?category=Item&id=" + idItem,
+		data: {},
+		success: function(data) {
+			let item = JSON.parse(data)
+			inputs[0].value = item.material
+			inputs[1].value = item.marca
+			inputs[2].value = item.medida
+			inputs[3].value = item.id
+			
+			return true
+		}
+	});
+	
+	popup(idModal)	
+	let confirmar = modal.querySelector('#enviar')
+	
+	confirmar.onclick = () => {
+		$('#pop_form_editar').submit(function() {
+			var dados = $(this).serialize();
+			dados += '&acao=Editar'
+			$.ajax({
+				type: 'POST',
+				url: '_controles/processa-acoes-itens.php',
+				data: dados,
+				success: function(data) {
+					alert(data)
+					// window.location.reload()
+					return true
+				}
+			});
+			
+			return false
+		});
 
-// When the user clicks the button, open the modal 
-btn.onclick = () => modal.style.display = "block"
-cancel.onclick = () => modal.style.display = "block"
+	}
+}
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = () => modal.style.display = "none"
-cancel.onclick = () => modal.style.display = "none"
+function excluirItem(idItem, idModal) {
+	popup(idModal)
+	let confirmar = document.querySelector(`div[id=${idModal}] > .modal-content > .modal-footer > [confirmar]`)
+	confirmar.onclick = () => {
+		$.ajax({
+			type: "GET",
+			url: "_controles/processa-acoes-itens.php?acao=Apagar&id=" + idItem,
+			data: {},
+			success: function(data) {
+				window.location.reload()
+				return true
+			}
+		});
+		
+		return false
+	}
+}
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = (e) => { if (e.target == modal) modal.style.display = "none" }
-
-// FIM POPS
-
-// ajax pop
-
+// Cadastro de Itens Ajax
 $().ready(function() {
 	$('#enviar').on('click', function(){
 		$('#pop_form').submit(function() {
 			var dados = $(this).serialize();
-			console.log($(this))
 			$.ajax({
 				type: "POST",
 				url: "_controles/processa-cadastro-item.php",
 				data: dados,
 				success: function(data) {
-					modal.style.display = "none"
 					window.location.reload()
-					return true;
+					return true
 				}
 			});
 			
-			return false;
+			return false
 		});
 	})
 });
-
-// Modal Sair
-var closeSair = document.getElementById("closeSair")
-var btnSair = document.getElementById("btnSair")
-var cancelSair = document.getElementById("cancelSair")
-var modalSair = document.getElementById("modalSair")
-
-closeSair.onclick = () => modalSair.style.display = "none"	
-btnSair.onclick = () => modalSair.style.display = "block"
-cancelSair.onclick = () => modalSair.style.display = "none"
-modalSair.onclick = (e) => modalSair.style.display = "none"
