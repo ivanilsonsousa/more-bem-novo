@@ -3,7 +3,7 @@
 	<head>
 		<title>Login</title>
 		<meta charset="utf-8">
-		<link rel="shortcut icon" href="_imagens/icone-logo.png">
+		<link rel="shortcut icon" href="_imagens2/icone-logo.png">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="css/template-login.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -12,7 +12,7 @@
 <body>
 <header class="cabecalho">
         <div class="logo">
-			<img href="#inicio" src="_imagens/icone-logo.png" alt="nao carregou">
+			<img href="#inicio" src="images/icone-logo.png" alt="nao carregou">
         </div>
         <div class="titulo">
 			<h2><strong>MORE BEM</strong></h2>
@@ -39,7 +39,6 @@
 						<img src="_imagens/logo.png" alt="nao carregou">
 					</div> -->
 				</div>
-
 				<div class="botao-submit">
 					<button type="submit">Entrar <i class="icofont-login"></i></button>
 				</div>

@@ -17,7 +17,7 @@
 }
 .div-dados-gerenciar img {
 	height: 70px;
-	margin: 0 20px;
+	margin: 0 10px;
 }
 .paragrafo {
 	display: flex;
@@ -194,7 +194,7 @@ tbody tr:hover {
 	justify-content: space-around;
 }
 .botao button img{
-	height: 30px;
+	height: 20px;
 	color: white;
 }
 .botao button:hover{

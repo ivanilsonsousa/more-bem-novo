@@ -3,15 +3,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<title>Home</title>
+	<title>Gerenciar Itens | Adm</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" href="_imagens/icone-logo.png">
+	<link rel="shortcut icon" href="images/icone-logo.png">
 	<link rel="stylesheet" type="text/css" href="css/template-gerenciar.css">
 </head>
 <header class="cabecalho">
 	<div class="logo">
-		<a href="tela-inicial-adm.php" title="Ir para Home"><img src="_imagens/icone-logo.png" alt="nao carregou"></a>
+		<a href="tela-inicial-adm.php" title="Ir para Home"><img src="images/icone-logo.png" alt="nao carregou"></a>
 	</div>
 	<div class="titulo">
 		<h2><strong>MORE BEM</strong></h2>
@@ -54,13 +54,13 @@
 <div class="meio">
 	<div class="conteudo">
 		<div class="div-dados-gerenciar">
-			<img src="_imagens/production.svg" alt="Gerenciar Itens">
+			<img src="images/production.svg" alt="Gerenciar Itens">
 			<h1>Gerenciar Itens</h1>
 		</div>
 		<div class="barra-op">
 			<div class="div-pesquisa">
 				<input type="text" name="pesquisa" placeholder="Pesquisar Item...">
-				<button><img src="_imagens/lupa.svg" alt=""></button>
+				<button><img src="images/lupa.svg" alt=""></button>
 			</div>
 			<div class="botao">
 				<button id="myBtn" onclick='popup("myModal")'>Adicionar Item<img src="images/plus.svg" alt=""></button>
@@ -97,7 +97,6 @@
 				</tbody>
 			</table>
 		</div> 
-		<!-- href='_controles/processa-acoes-itens.php?acao=Editar&id=<?php echo $dado["id"];?>' -->
 	</div>
 </div>
 </body>

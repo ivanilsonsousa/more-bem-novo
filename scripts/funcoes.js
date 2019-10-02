@@ -1,5 +1,4 @@
-﻿
-/**
+﻿/**
  * Essa função pega o item selecionado no momento
  * da criação de um novo Orçamento no evento de
  * clique do elemento <select> dentro do fieldset
@@ -147,8 +146,6 @@ function verificaApagar(item){
     // } 
 }
 
-
-
 function ano(){
 	return new Date().getFullYear()
 }
@@ -168,7 +165,6 @@ function popup(idModal) {
 function editarItem(idItem, idModal) {
 	let modal = document.querySelector(`#${idModal}`)
 	let inputs = modal.querySelectorAll('input')
-
 	$.ajax({
 		type: "GET",
 		url: "_controles/get-dados.php?category=Item&id=" + idItem,
@@ -196,8 +192,7 @@ function editarItem(idItem, idModal) {
 				url: '_controles/processa-acoes-itens.php',
 				data: dados,
 				success: function(data) {
-					alert(data)
-					// window.location.reload()
+					window.location.reload()
 					return true
 				}
 			});
@@ -209,6 +204,7 @@ function editarItem(idItem, idModal) {
 }
 
 function excluirItem(idItem, idModal) {
+	console.log(idItem)
 	popup(idModal)
 	let confirmar = document.querySelector(`div[id=${idModal}] > .modal-content > .modal-footer > [confirmar]`)
 	confirmar.onclick = () => {

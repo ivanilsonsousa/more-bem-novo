@@ -1,3 +1,5 @@
+<?php require_once "_controles/verifica-autenticacao.php"; ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
@@ -6,11 +8,11 @@
 		<link rel="shortcut icon" href="_imagens/icone-logo.png">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="css/template-inicial.css">
-		<script type="text/javascript" src="_scripts/funcoes.js"></script>
+		<script type="text/javascript" src="scripts/funcoes.js"></script>
 	</head>
 	<header class="cabecalho">
         <div class="logo">
-			<img src="_imagens/icone-logo.png" alt="nao carregou">
+			<img src="images/icone-logo.png" alt="nao carregou">
         </div>
         <div class="titulo">
 			<h2><strong>MORE BEM</strong></h2>
@@ -46,7 +48,7 @@
             </ul>
         </nav>
         <aside class="autenticacao">
-			<i class="icofont-sign-out icofont-2x"></i>
+			<i onclick='popup("modalSair")' class="icofont-sign-out icofont-2x"></i>
         </aside>
     </header>
 <body>
@@ -55,7 +57,7 @@
 		
 		<div class="card">
 			<div class="simbolo">
-				<img src="_imagens/human-resources.svg" alt="">
+				<img src="images/human-resources.svg" alt="">
 			</div>
 			<div class="paragrafo">
 				<p>Gerenciar Usuários</p>
@@ -63,7 +65,7 @@
 		</div>
 		<div class="card">
 			<div class="simbolo">
-				<img src="_imagens/statistics.svg" alt="">
+				<img src="images/statistics.svg" alt="">
 			</div>
 			<div class="paragrafo">
 				<p>Gerenciar Orçamentos</p>
@@ -71,7 +73,7 @@
 		</div>
 		<div class="card">
 			<div class="simbolo">
-				<img src="_imagens/analytics.svg" alt="">
+				<img src="images/analytics.svg" alt="">
 			</div>
 			<div class="paragrafo">
 				<p>Gerenciar Ofertas</p>
@@ -79,7 +81,7 @@
 		</div>
 		<div class="card">
 			<div class="simbolo">
-				<img src="_imagens/businessman.svg" alt="">
+				<img src="images/businessman.svg" alt="">
 			</div>
 			<div class="paragrafo">
 				<p>Gerenciar Fornecedores</p>
@@ -87,7 +89,7 @@
 		</div>
 		<div class="card">
 			<div class="simbolo">
-				<img src="_imagens/chat.svg" alt="">
+				<img src="images/chat.svg" alt="">
 			</div>
 			<div class="paragrafo">
 				<p>Gerenciar Mensagens</p>
@@ -95,7 +97,7 @@
 		</div>
 		<div class="card" onclick="window.location.href='tela-adm-gerenciar-itens.php';">
 			<div class="simbolo">
-				<img src="_imagens/production.svg" alt="">
+				<img src="images/production.svg" alt="">
 			</div>
 			<div class="paragrafo">
 				<p>Gerenciar Itens</p>
@@ -106,6 +108,19 @@
 
 </div>
 </body>
+<!-- Modal Sair -->
+<div id="modalSair" class="modal">
+	<div class="modal-content modal-alert">
+		<div class="modal-header">
+			<h3 class="titulo"><i class="icofont-question-circle"></i> Deseja realmente sair do Sistema?</h3>
+			<span sair class="close" title="Fechar"><i id="closeSair" class="icofont-close-circled"></i></span>
+		</div>
+		<div class="modal-footer">
+			<button onclick="window.location.href='_controles/sair.php';" id="sair"><i class="icofont-check"></i> Sim</button>
+			<button cancelar id='cancelSair'><i class="icofont-not-allowed"></i> Não</button>
+		</div>
+	</div>
+</div>
 <footer class="rodape">
 		<span>&#169; <script> document.write(ano())</script> Todos os direitos reservados by <strong>Scorpion <i class="icofont-heart"></i>, Inc.</strong></span>
 </footer>
