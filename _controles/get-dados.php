@@ -8,15 +8,12 @@
 
     $pesquisa = $bd->pesquisarItens($query);
 
-    echo (json_encode($pesquisa));
-
-    exit; // enquanto testo a funcionalidade
-    
     if($category == "Item") {
         $dado = $bd->listarItem($id);
         echo json_encode($dado);
     } else {
-        echo("Parametros Incorretos!");
+        echo (json_encode($pesquisa));
+        exit; // enquanto testo a funcionalidade
     }
 
 ?>

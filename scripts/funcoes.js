@@ -233,7 +233,7 @@ class TObjectToTable {
 	initTable(){
 		console.log(this.content);
 		this.content[0].appendChild(this.table)
-		this.table.innerHTML = '';
+		this.table.innerHTML = null;
 
 		this.table.appendChild(this.thead)
 		this.table.appendChild(this.tbody)
@@ -256,7 +256,7 @@ class TObjectToTable {
 			corpo += '<td>' + e.marca + '</td>';
 			corpo += '<td>' + e.medida + '</td>';
 			corpo += `<td>
-						<a onclick="excluirItem("${e.id}","modalExcluir') title="Apagar" class="bnt"><i id="lixo" class="icofont-trash"></i></a> | <a onclick='editarItem("${e.id}","modalEditar")' title="Editar" class="bnt"><i id="lapis" class="icofont-pencil-alt-5"></i></a>
+						<a onclick='excluirItem("${e.id}","modalExcluir")' title="Apagar" class="bnt"><i id="lixo" class="icofont-trash"></i></a> | <a onclick='editarItem("${e.id}","modalEditar")' title="Editar" class="bnt"><i id="lapis" class="icofont-pencil-alt-5"></i></a>
 					  </td>`
 
 			corpo += '</tr>'
@@ -272,34 +272,56 @@ function callback(data) {
 	montaTabela(data)
 }
 
-function montaTabela(dados) {
-	// console.log(dados)
+function montaTabela(content, obj, collumns) {
+	console.log(Object.keys(obj[0]).length)
 
-	
-	// let tbody = document.querySelector('tbody')
-	
-	// let qtdLinhas = tabela.rows.length
-	// let qdtColunas = tabela.rows[qtdLinhas-1].cells.length
-	// let novaLinha = tabela.insertRow(qtdLinhas)
-	
-	// dados.map((e)=>{
-		// 	console.log(e)
-		
-		// 	tbody.innerHTML += '<tr>';
-		
-		// 	Object.keys( obj[0] ).forEach( function( text ){
-			// 		tbody.innerHTML += '<td>' + obj[i][text] + '</td>';
-			// 	});
-			
-			// 	tbody.innerHTML += '</tr>';
-			// })
-			
+	this.obj = obj;
+	this.content = document.getElementsByClassName(content);
+	this.collumns = collumns;
+	this.table = document.querySelector("table") ? document.querySelector("table") : document.createElement("table");
+	this.thead = document.querySelector("thead") ? document.querySelector("thead") : document.createElement("thead");
+	this.tbody = document.querySelector("tbody") ? document.querySelector("tbody") : document.createElement("tbody");
 
-	// for( var i in obj ){
-	// 	Object.keys( obj[0] ).forEach( function( text ){
-	// 		tbody.innerHTML += '<td>' + obj[i][text] + '</td>';
-	// 	});
-	// }
+	this.content[0].appendChild(this.table)
+	this.table.innerHTML = '';
+
+	this.table.appendChild(this.thead)
+	this.table.appendChild(this.tbody)
+	let cabecalho = ''
+	let corpo = ''
+	
+	if (this.collumns != undefined) {
+		for (const value of this.collumns) {
+			cabecalho += '<th>' + value + '</th>';
+		}
+		cabecalho += '<th>Ações</th>';
+		this.thead.innerHTML += cabecalho;
+		this.thead.innerHTML += '</tr>';
+	}
+
+	this.obj.forEach((e) => {
+		Object.entries(e).forEach(([chave, valor, index]) => {
+			console.log(`${chave}: ${valor} : ${index}`)
+		})
+	})
+
+
+	this.obj.map((e) => {
+		// console.log("-------hj")
+		// console.log(e)
+		corpo += '<tr>'
+		corpo += '<td>' + e.id + '</td>';
+		corpo += '<td>' + e.material + '</td>';
+		corpo += '<td>' + e.marca + '</td>';
+		corpo += '<td>' + e.medida + '</td>';
+		corpo += `<td>
+					<a onclick='excluirItem("${e.id}","modalExcluir")' title="Apagar" class="bnt"><i id="lixo" class="icofont-trash"></i></a> | <a onclick='editarItem("${e.id}","modalEditar")' title="Editar" class="bnt"><i id="lapis" class="icofont-pencil-alt-5"></i></a>
+				  </td>`
+
+		corpo += '</tr>'
+	})
+
+	this.tbody.innerHTML += corpo;
 }
 
 function pesquisaItens(query) {
@@ -308,7 +330,8 @@ function pesquisaItens(query) {
 		url: "_controles/get-dados.php?query=" + query,
 		data: {},
 		success: function(data) {
-			new TObjectToTable("tabela", JSON.parse(data), ["ID", "Material", "Marca", "Medida"]);
+			// new TObjectToTable("tabela", JSON.parse(data), ["ID", "Material", "Marca", "Medida"]);
+			montaTabela("tabela", JSON.parse(data), ["ID", "Material", "Marca", "Medida"]);
 		},
 		error: function(data) {
 			alert(data)
