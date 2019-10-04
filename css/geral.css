@@ -47,7 +47,7 @@ body {
 .conteudo {
 	width: 100%;
 	display: grid;
-	grid-template-rows: auto 100px 1fr;
+	grid-template-rows: auto auto 1fr;
 	align-items: center;
 	justify-items: center;
 	padding: 20px;
@@ -177,7 +177,7 @@ body {
 	margin: auto;
 	padding: 0;
 	border: none;
-	width: 50%;
+	width: 40%;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 	-webkit-animation-name: animatetop;
 	-webkit-animation-duration: 0.5s;

@@ -250,6 +250,21 @@ class BD {
 		}
 	}
 
+	public function pesquisarItens($query) {
+		global $pdo;
+		global $msgErro;
+
+		try {
+			$sql = $pdo->prepare("SELECT * FROM item WHERE material LIKE '%$query%'");
+			$sql->execute();
+			$dado = $sql->fetchAll(PDO::FETCH_ASSOC);
+			
+			return $dado;
+		} catch (Exception $e) {
+			$msgErro = $e->getMessage();
+		}
+	}
+
 	public function listarItem($indice) {
 		global $pdo;
 		global $msgErro;

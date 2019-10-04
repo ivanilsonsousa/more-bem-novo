@@ -42,11 +42,11 @@ function mostrarTexto(){
 	if (document.getElementById('senha').type == 'password') {
 		document.getElementById('senha').type = 'text'
 		let img = document.getElementById('olho')
-		img.src = '_imagens/eye-slash-regular.svg'
+		img.src = 'images/eye-slash-regular.svg'
 	} else {
 		document.getElementById('senha').type = 'password'
 		let img = document.getElementById('olho')
-		img.src = '_imagens/eye-regular.svg'
+		img.src = 'images/eye-regular.svg'
 	}
 }
 
@@ -119,52 +119,26 @@ function abilitarOption(opcao){
 	}
 }
 
-function sair(){
-    if (confirm("Deseja realmente sair?")){
-        location.href = "_controles/sair.php";
-    } 
-}
-
-function confirmarApagarItem(id){
-	if(confirm("Deseja realmente apagar esse item?")){
-		location.href = "_controles/processa-acoes-itens.php?acao=Apagar&id="+id 
-	}
-}
-
-function confirmarApagarFornecedor(id){
-	if(confirm("Deseja realmente apagar esse Fornecedor?")){
-		location.href = "_controles/processa-acoes-fornecedores.php?acao=Apagar&id="+id 
-	}
-}
-
-function verificaApagar(item){
-	alert(item)
-    // if (confirm("Deseja realmente Apagar Esse Item?")){
-    //     //location.href="_controles/sair.php";
-    //     url = "_controles/processa-acoes-itens.php?acao=Apagar&id="+item
-    //     location.href= url
-    // } 
-}
-
 function ano(){
 	return new Date().getFullYear()
 }
 
 // Janela Modal
 function popup(idModal) {
-	let modal = document.getElementById(idModal)	
-	let exit = document.querySelector(`div[id=${idModal}] > .modal-content > .modal-header > [sair]`)
-	let cancel = document.querySelector(`div[id=${idModal}] > .modal-content > .modal-footer > [cancelar]`)
+	let modal = document.getElementById(idModal)
+	let exit = modal.querySelector('[sair]')
+	let cancel = modal.querySelector('[cancelar]')
 	
-	modal.style.display = "block"
-	exit.onclick = () => modal.style.display = "none"
-	cancel.onclick = () => modal.style.display = "none"
-	window.onclick = (e) => { if (e.target == modal) modal.style.display = "none" }
+	modal.style.display = 'block'
+	exit.onclick = () => modal.style.display = 'none'
+	cancel.onclick = () => modal.style.display = 'none'
+	window.onclick = (e) => { if (e.target == modal) modal.style.display = 'none' }
 }
 
 function editarItem(idItem, idModal) {
 	let modal = document.querySelector(`#${idModal}`)
 	let inputs = modal.querySelectorAll('input')
+	
 	$.ajax({
 		type: "GET",
 		url: "_controles/get-dados.php?category=Item&id=" + idItem,
@@ -207,6 +181,7 @@ function excluirItem(idItem, idModal) {
 	console.log(idItem)
 	popup(idModal)
 	let confirmar = document.querySelector(`div[id=${idModal}] > .modal-content > .modal-footer > [confirmar]`)
+	
 	confirmar.onclick = () => {
 		$.ajax({
 			type: "GET",
@@ -241,3 +216,104 @@ $().ready(function() {
 		});
 	})
 });
+
+class TObjectToTable {
+	constructor( content, obj, collumns ){
+		this.obj = obj;
+		this.content = document.getElementsByClassName(content);
+		this.collumns = collumns;
+		this.table = document.createElement("table");
+		this.thead = document.createElement("thead");
+		this.tbody = document.createElement("tbody");
+
+		// get Collumns
+		this.initTable();
+	}
+
+	initTable(){
+		console.log(this.content);
+		this.content[0].appendChild(this.table)
+		this.table.innerHTML = '';
+
+		this.table.appendChild(this.thead)
+		this.table.appendChild(this.tbody)
+		let cabecalho = ''
+		let corpo = ''
+		
+		if (this.collumns != undefined) {
+			for (const value of this.collumns) {
+				cabecalho += '<th>' + value + '</th>';
+			}
+			cabecalho += '<th>Ações</th>';
+			this.thead.innerHTML += cabecalho;
+			this.thead.innerHTML += '</tr>';
+		}
+
+		this.obj.map((e) => {
+			corpo += '<tr>'
+			corpo += '<td>' + e.id + '</td>';
+			corpo += '<td>' + e.material + '</td>';
+			corpo += '<td>' + e.marca + '</td>';
+			corpo += '<td>' + e.medida + '</td>';
+			corpo += `<td>
+						<a onclick="excluirItem("${e.id}","modalExcluir') title="Apagar" class="bnt"><i id="lixo" class="icofont-trash"></i></a> | <a onclick='editarItem("${e.id}","modalEditar")' title="Editar" class="bnt"><i id="lapis" class="icofont-pencil-alt-5"></i></a>
+					  </td>`
+
+			corpo += '</tr>'
+		})
+		console.log(corpo)
+
+		this.tbody.innerHTML += corpo;
+
+	}
+}
+
+function callback(data) {
+	montaTabela(data)
+}
+
+function montaTabela(dados) {
+	// console.log(dados)
+
+	
+	// let tbody = document.querySelector('tbody')
+	
+	// let qtdLinhas = tabela.rows.length
+	// let qdtColunas = tabela.rows[qtdLinhas-1].cells.length
+	// let novaLinha = tabela.insertRow(qtdLinhas)
+	
+	// dados.map((e)=>{
+		// 	console.log(e)
+		
+		// 	tbody.innerHTML += '<tr>';
+		
+		// 	Object.keys( obj[0] ).forEach( function( text ){
+			// 		tbody.innerHTML += '<td>' + obj[i][text] + '</td>';
+			// 	});
+			
+			// 	tbody.innerHTML += '</tr>';
+			// })
+			
+
+	// for( var i in obj ){
+	// 	Object.keys( obj[0] ).forEach( function( text ){
+	// 		tbody.innerHTML += '<td>' + obj[i][text] + '</td>';
+	// 	});
+	// }
+}
+
+function pesquisaItens(query) {
+	$.ajax({
+		type: "POST",
+		url: "_controles/get-dados.php?query=" + query,
+		data: {},
+		success: function(data) {
+			new TObjectToTable("tabela", JSON.parse(data), ["ID", "Material", "Marca", "Medida"]);
+		},
+		error: function(data) {
+			alert(data)
+		}
+	});
+	
+	return true
+}

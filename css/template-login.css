@@ -21,6 +21,17 @@
 .linha {
     padding: 0px 5px;
 }
+[olho] {
+    height: 0px;
+}
+[olho] img {
+    height: 20px;
+    float: right;
+    margin-right: 15px;
+    position: relative;
+    top: -45px;
+    cursor: pointer;
+}
 .linha input {
     position: relative;
     top: -10px;

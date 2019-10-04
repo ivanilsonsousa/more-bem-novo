@@ -67,35 +67,7 @@
 			</div>
 		</div>
 		<div class="tabela">
-			<table>
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Material</th>
-						<th>Marca</th>
-						<th>Unidade de Medida</th>
-						<th>Ações</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php
-						$lista = $bd->listarTodosOsItens();
-						
-						while($dado = $lista->fetch(PDO::FETCH_ASSOC)) {?>
-							<tr>
-								<td><?php echo $dado['id'];?></td>
-								<td><?php echo $dado['material'];?></td>
-								<td><?php echo $dado['marca'];?></td>
-								<td><?php echo $dado['medida'];?></td>
-								<td>
-									<a onclick='excluirItem(<?php echo $dado["id"];?>,"modalExcluir")' title="Apagar" class="bnt"><i id="lixo" class="icofont-trash"></i></a> |
-									<a onclick='editarItem(<?php echo $dado["id"];?>,"modalEditar")' title="Editar" class="bnt"><i id="lapis" class="icofont-pencil-alt-5"></i></a>
-								</td>
-							</tr>
-							<?php
-						} ?>
-				</tbody>
-			</table>
+			
 		</div> 
 	</div>
 </div>

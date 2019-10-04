@@ -9,8 +9,8 @@
 	font-size: 15pt;
 }
 .card {
-	max-width: 350px;
-	max-height: 350px;
+	max-width: 320px;
+	max-height: 320px;
 	min-width: 200px;
 }
 .card:hover {

@@ -3,12 +3,12 @@
 	<head>
 		<title>Login</title>
 		<meta charset="utf-8">
-		<link rel="shortcut icon" href="_imagens2/icone-logo.png">
+		<link rel="shortcut icon" href="imageS/icone-logo.png">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="css/template-login.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script type="text/javascript" src="scripts/funcoes.js"></script>
-</head>
+	</head>
 <body>
 <header class="cabecalho">
         <div class="logo">
@@ -34,11 +34,8 @@
 				<div class="linha" senha>
 					<i class="icofont-key"></i>
 					<input type="password" name="senha" id="senha" placeholder="Digite a senha...">
-					<!-- <span olho><img id="olho" onclick="mostrarTexto()" src="_imagens/eye-regular.svg"></span> -->
-					<!-- <div class="logo">
-						<img src="_imagens/logo.png" alt="nao carregou">
-					</div> -->
 				</div>
+				<span olho><img id="olho" onclick="mostrarTexto()" src="images/eye-regular.svg"></span>
 				<div class="botao-submit">
 					<button type="submit">Entrar <i class="icofont-login"></i></button>
 				</div>
