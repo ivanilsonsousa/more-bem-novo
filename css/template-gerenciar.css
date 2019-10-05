@@ -117,6 +117,13 @@
 		grid-template-columns: 100px 150px 1fr 50px;
 	}
 }
+[nenhum] {
+	text-align: center;
+	width: 100%;
+	background: #073999;
+	color: white;
+	padding: 5px;
+}
 .tabela {
 	width: 100%;
 	display: flex;

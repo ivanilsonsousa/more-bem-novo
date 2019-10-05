@@ -8,6 +8,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="images/icone-logo.png">
 	<link rel="stylesheet" type="text/css" href="css/template-gerenciar.css">
+	<script type="text/javascript" src="scripts/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="scripts/funcoes.js"></script>
 </head>
 <header class="cabecalho">
 	<div class="logo">
@@ -59,8 +61,8 @@
 		</div>
 		<div class="barra-op">
 			<div class="div-pesquisa">
-				<input type="text" name="pesquisa" placeholder="Pesquisar Item...">
-				<button><img src="images/lupa.svg" alt=""></button>
+				<input search type="text" name="pesquisa" placeholder="Pesquisar Item...">
+				<button onclick='pesquisaItens("a")'><img src="images/lupa.svg" alt=""></button>
 			</div>
 			<div class="botao">
 				<button id="myBtn" onclick='popup("myModal")'>Adicionar Item<img src="images/plus.svg" alt=""></button>
@@ -72,7 +74,7 @@
 	</div>
 </div>
 </body>
-
+<!-- Modal Adicionar Item -->
 <div id="myModal" class="modal">
 	<div class="modal-content">
 		<div class="modal-header">
@@ -139,7 +141,6 @@
 		</div>
 	</div>
 </div>
-
 <!-- Modal Sair -->
 <div id="modalSair" class="modal">
 	<div class="modal-content modal-alert">
@@ -153,7 +154,6 @@
 		</div>
 	</div>
 </div>
-
 <!-- Modal Excluir -->
 <div id="modalExcluir" class="modal">
 	<div class="modal-content modal-alert">
@@ -168,8 +168,6 @@
 	</div>
 </div>
 
-<script type="text/javascript" src="scripts/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="scripts/funcoes.js"></script>
 <footer class="rodape">
 	<span>&copy; <script> document.write(ano())</script> Todos os direitos reservados by <strong>Scorpion <i class="icofont-heart"></i>, Inc.</strong></span>
 </footer>

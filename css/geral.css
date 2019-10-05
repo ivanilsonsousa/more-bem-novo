@@ -114,6 +114,15 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	animation: createBox .5s;
+}
+@keyframes createBox {
+	from {
+	  transform: scale(0);
+	}
+	to {
+	  transform: scale(1);
+	}
 }
 .simbolo img {
 	height: 100px;

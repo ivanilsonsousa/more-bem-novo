@@ -268,20 +268,14 @@ class TObjectToTable {
 	}
 }
 
-function callback(data) {
-	montaTabela(data)
-}
-
-function montaTabela(content, obj, collumns) {
-	console.log(Object.keys(obj[0]).length)
-	let ja = false
-	this.obj = obj;
-	this.content = document.getElementsByClassName(content);
+function creaTable(content, obj, collumns) {
+	this.obj = obj
 	this.collumns = collumns;
+	this.content = document.getElementsByClassName(content);
 	this.table = document.querySelector("table") ? document.querySelector("table") : document.createElement("table");
 	this.thead = document.querySelector("thead") ? document.querySelector("thead") : document.createElement("thead");
 	this.tbody = document.querySelector("tbody") ? document.querySelector("tbody") : document.createElement("tbody");
-
+	
 	this.content[0].appendChild(this.table)
 	this.table.innerHTML = '';
 	this.thead.innerHTML = '';
@@ -289,38 +283,59 @@ function montaTabela(content, obj, collumns) {
 
 	this.table.appendChild(this.thead)
 	this.table.appendChild(this.tbody)
+
+	if(this.obj.length == 0) {
+		this.tbody.innerHTML = `<h2 nenhum >Nenhum dado foi retornado...</h2>`
+		return
+	}
+
 	let cabecalho = ''
 	let corpo = ''
 	
-	if ((this.collumns != undefined) && (!ja)) {
-		for (const value of this.collumns) {
-			cabecalho += '<th>' + value + '</th>';
-		}
-		cabecalho += '<th>Ações</th>';
-		this.thead.innerHTML += cabecalho;
-		this.thead.innerHTML += '</tr>';
-		ja = true
+	if ( this.collumns.length == Object.keys(this.obj[0]).length ) {
+		this.collumns.forEach((e) => {
+			cabecalho += '<th>' + e + '</th>'
+		})
+	} else { 
+		Object.keys(obj[0]).forEach((e) => {
+			cabecalho += '<th>' + e + '</th>'
+		})
 	}
 
+	cabecalho += '<th>Ações</th>';
+	this.thead.innerHTML += cabecalho;
+	this.thead.innerHTML += '</tr>';
+
+	// this.obj.forEach((e) => {
+	// 	Object.entries(e).forEach(([chave, valor, index]) => {
+	// 		console.log(`${chave}: ${valor} : ${index}`)
+	// 	})
+	// })
+
 	this.obj.forEach((e) => {
-		Object.entries(e).forEach(([chave, valor, index]) => {
-			console.log(`${chave}: ${valor} : ${index}`)
-		})
-	})
+		
 
+		let a = e
 
-	this.obj.map((e) => {
-		// console.log("-------hj")
-		// console.log(e)
-		corpo += '<tr>'
+		// console.log("aaaaaaaaaaa")
+		// console.log(a)
+		// console.log("aaaaaaaaaaa")
+
+		for (const i of a) {
+			console.log(a[i])
+			console.log("-------")
+		}
+
+		console.log(":::::::::::::")
+
 		corpo += '<td>' + e.id + '</td>';
 		corpo += '<td>' + e.material + '</td>';
 		corpo += '<td>' + e.marca + '</td>';
 		corpo += '<td>' + e.medida + '</td>';
+		
 		corpo += `<td>
 					<a onclick='excluirItem("${e.id}","modalExcluir")' title="Apagar" class="bnt"><i id="lixo" class="icofont-trash"></i></a> | <a onclick='editarItem("${e.id}","modalEditar")' title="Editar" class="bnt"><i id="lapis" class="icofont-pencil-alt-5"></i></a>
-				  </td>`
-
+				  </td>`		
 		corpo += '</tr>'
 	})
 
@@ -334,7 +349,7 @@ function pesquisaItens(query) {
 		data: {},
 		success: function(data) {
 			// new TObjectToTable("tabela", JSON.parse(data), ["ID", "Material", "Marca", "Medida"]);
-			montaTabela("tabela", JSON.parse(data), ["ID", "Material", "Marca", "Medida"]);
+			creaTable("tabela", JSON.parse(data), ["ID", "Material", "Marca", "Medida"]);
 		},
 		error: function(data) {
 			alert(data)
