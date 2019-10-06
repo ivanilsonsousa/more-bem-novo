@@ -255,7 +255,7 @@ class BD {
 		global $msgErro;
 
 		try {
-			$sql = $pdo->prepare("SELECT * FROM item WHERE material LIKE '%$query%'");
+			$sql = $pdo->prepare("SELECT * FROM item WHERE material LIKE '%$query%' ORDER BY id DESC");
 			$sql->execute();
 			$dado = $sql->fetchAll(PDO::FETCH_ASSOC);
 			

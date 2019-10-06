@@ -268,18 +268,18 @@ class TObjectToTable {
 	}
 }
 
-function creaTable(content, obj, collumns) {
+function createTable(content, obj, collumns) {
 	this.obj = obj
-	this.collumns = collumns;
-	this.content = document.getElementsByClassName(content);
-	this.table = document.querySelector("table") ? document.querySelector("table") : document.createElement("table");
-	this.thead = document.querySelector("thead") ? document.querySelector("thead") : document.createElement("thead");
-	this.tbody = document.querySelector("tbody") ? document.querySelector("tbody") : document.createElement("tbody");
+	this.collumns = collumns
+	this.content = document.getElementsByClassName(content)
+	this.table = document.querySelector("table") ? document.querySelector("table") : document.createElement("table")
+	this.thead = document.querySelector("thead") ? document.querySelector("thead") : document.createElement("thead")
+	this.tbody = document.querySelector("tbody") ? document.querySelector("tbody") : document.createElement("tbody")
 	
 	this.content[0].appendChild(this.table)
-	this.table.innerHTML = '';
-	this.thead.innerHTML = '';
-	this.tbody.innerHTML = '';
+	this.table.innerHTML = ''
+	this.thead.innerHTML = ''
+	this.tbody.innerHTML = ''
 
 	this.table.appendChild(this.thead)
 	this.table.appendChild(this.tbody)
@@ -302,44 +302,22 @@ function creaTable(content, obj, collumns) {
 		})
 	}
 
-	cabecalho += '<th>Ações</th>';
-	this.thead.innerHTML += cabecalho;
-	this.thead.innerHTML += '</tr>';
-
-	// this.obj.forEach((e) => {
-	// 	Object.entries(e).forEach(([chave, valor, index]) => {
-	// 		console.log(`${chave}: ${valor} : ${index}`)
-	// 	})
-	// })
+	cabecalho += '<th>Ações</th>'
+	this.thead.innerHTML += cabecalho
+	this.thead.innerHTML += '</tr>'
 
 	this.obj.forEach((e) => {
-		
+		Object.values(e).forEach((el) => {
+			corpo += '<td>' + el + '</td>'
+		})
 
-		let a = e
-
-		// console.log("aaaaaaaaaaa")
-		// console.log(a)
-		// console.log("aaaaaaaaaaa")
-
-		for (const i of a) {
-			console.log(a[i])
-			console.log("-------")
-		}
-
-		console.log(":::::::::::::")
-
-		corpo += '<td>' + e.id + '</td>';
-		corpo += '<td>' + e.material + '</td>';
-		corpo += '<td>' + e.marca + '</td>';
-		corpo += '<td>' + e.medida + '</td>';
-		
 		corpo += `<td>
 					<a onclick='excluirItem("${e.id}","modalExcluir")' title="Apagar" class="bnt"><i id="lixo" class="icofont-trash"></i></a> | <a onclick='editarItem("${e.id}","modalEditar")' title="Editar" class="bnt"><i id="lapis" class="icofont-pencil-alt-5"></i></a>
 				  </td>`		
 		corpo += '</tr>'
 	})
 
-	this.tbody.innerHTML += corpo;
+	this.tbody.innerHTML += corpo
 }
 
 function pesquisaItens(query) {
@@ -349,7 +327,7 @@ function pesquisaItens(query) {
 		data: {},
 		success: function(data) {
 			// new TObjectToTable("tabela", JSON.parse(data), ["ID", "Material", "Marca", "Medida"]);
-			creaTable("tabela", JSON.parse(data), ["ID", "Material", "Marca", "Medida"]);
+			createTable("tabela", JSON.parse(data), ["ID", "Material", "Marca", "Medida"]);
 		},
 		error: function(data) {
 			alert(data)
@@ -358,3 +336,10 @@ function pesquisaItens(query) {
 	
 	return true
 }
+
+function search() {
+	let pesquisaTexto = document.querySelector('[search]').value
+	pesquisaItens(pesquisaTexto)
+}
+
+pesquisaItens('')

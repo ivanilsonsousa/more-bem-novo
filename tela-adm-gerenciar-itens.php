@@ -62,7 +62,7 @@
 		<div class="barra-op">
 			<div class="div-pesquisa">
 				<input search type="text" name="pesquisa" placeholder="Pesquisar Item...">
-				<button onclick='pesquisaItens("a")'><img src="images/lupa.svg" alt=""></button>
+				<button onclick='search()'><img src="images/lupa.svg" alt=""></button>
 			</div>
 			<div class="botao">
 				<button id="myBtn" onclick='popup("myModal")'>Adicionar Item<img src="images/plus.svg" alt=""></button>
