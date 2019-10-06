@@ -34,7 +34,7 @@ body {
 .card,
 .conteudo {
 	display: grid;
-	grid-template-rows: 70% 30%;
+	grid-template-rows: 7fr 3fr;
 	vertical-align: top;
 	height: 90%;
 	width: 260px;
@@ -43,6 +43,27 @@ body {
 	border-radius: 5px;
 	box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.3);
 	border-bottom: 5px solid var(--borda-padrao);
+}
+.card {
+	overflow: hidden;
+}
+.card:hover {
+	transform: translateY(-10px);
+}
+[hoverUp]:hover {
+	background: #f50a31;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	animation: hoverCard .5s;
+}
+@-webkit-keyframes hoverCard {
+	from { top:300px; opacity:0; } 
+	to { top:0; opacity:1; }
+}
+@keyframes hoverCard {
+	from { top:300px; opacity:0; }
+	to { top:0; opacity:1; }
 }
 .conteudo {
 	width: 100%;
@@ -203,7 +224,6 @@ body {
 	from { top:-300px; opacity:0; } 
 	to { top:0; opacity:1; }
 }
-
 @keyframes animatetop {
 	from { top:-300px; opacity:0; }
 	to { top:0; opacity:1; }
@@ -311,7 +331,9 @@ body {
 .campo select option {
 	padding-right: 1em;
 }
-.campo input:focus, .campo select:focus, .campo textarea:focus {
+.campo input:focus, 
+.campo select:focus, 
+.campo textarea:focus {
 	background: #FFC;
 	border: 1px solid black;
 }

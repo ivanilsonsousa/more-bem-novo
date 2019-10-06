@@ -102,6 +102,7 @@
 			<div class="paragrafo">
 				<p>Gerenciar Itens</p>
 			</div>
+			<div hoverUp></div>
 		</div>
 		
 	</div>

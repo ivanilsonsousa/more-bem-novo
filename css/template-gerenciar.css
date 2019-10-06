@@ -117,21 +117,28 @@
 		grid-template-columns: 100px 150px 1fr 50px;
 	}
 }
-[nenhum] {
-	text-align: center;
-	width: 100%;
-	background: #073999;
-	color: white;
+.message-no-data {
+	display: grid;
+	align-content: center;
+	justify-items: center;
+	padding: 5%;
+}
+.message-no-data i{
+	color: grey;
+}
+.message-no-data h3{
+	color: grey;
 	padding: 5px;
 }
 .tabela {
 	width: 100%;
 	height: 98%;
+	max-height: 750px;
 	display: flex;
 	justify-content: center;
 	align-self: flex-start;
 	margin-top: 15px;
-	overflow: scroll;
+	overflow: auto;
 }
 table {
 	width: 100%;
@@ -216,10 +223,11 @@ tbody tr:hover {
 	height: 20px;
 	color: white;
 }
-.botao button:hover{
+button:hover,
+button:focus {
 	background: SteelBlue;
 }
-.div-pesquisa button:hover {
+.div-pesquisa > button:hover {
 	background: SteelBlue;
 }
 td > a > i {

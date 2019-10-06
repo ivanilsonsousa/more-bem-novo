@@ -128,7 +128,9 @@ function popup(idModal) {
 	let modal = document.getElementById(idModal)
 	let exit = modal.querySelector('[sair]')
 	let cancel = modal.querySelector('[cancelar]')
-	
+
+	// console.log(s)
+
 	modal.style.display = 'block'
 	exit.onclick = () => modal.style.display = 'none'
 	cancel.onclick = () => modal.style.display = 'none'
@@ -167,6 +169,7 @@ function editarItem(idItem, idModal) {
 				data: dados,
 				success: function(data) {
 					window.location.reload()
+					// pesquisaItens('')
 					return true
 				}
 			});
@@ -178,7 +181,6 @@ function editarItem(idItem, idModal) {
 }
 
 function excluirItem(idItem, idModal) {
-	console.log(idItem)
 	popup(idModal)
 	let confirmar = document.querySelector(`div[id=${idModal}] > .modal-content > .modal-footer > [confirmar]`)
 	
@@ -189,6 +191,7 @@ function excluirItem(idItem, idModal) {
 			data: {},
 			success: function(data) {
 				window.location.reload()
+				// pesquisaItens('')
 				return true
 			}
 		});
@@ -198,24 +201,23 @@ function excluirItem(idItem, idModal) {
 }
 
 // Cadastro de Itens Ajax
-$().ready(function() {
-	$('#enviar').on('click', function(){
-		$('#pop_form').submit(function() {
-			var dados = $(this).serialize();
-			$.ajax({
-				type: "POST",
-				url: "_controles/processa-cadastro-item.php",
-				data: dados,
-				success: function(data) {
-					window.location.reload()
-					return true
-				}
-			});
-			
-			return false
-		});
+$().ready( function() {
+	$('#pop_form').submit( function() {
+		let dados = $(this).serialize()
+
+		$.post( "_controles/processa-cadastro-item.php" , dados ).done( function() {
+			$('#pop_form').each( function(){
+				this.reset()
+			})
+
+			$('#enviar').closest('.modal').css('display', 'none')
+			pesquisaItens('')
+			return true
+		})
+		
+		return false
 	})
-});
+})
 
 class TObjectToTable {
 	constructor( content, obj, collumns ){
@@ -285,7 +287,10 @@ function createTable(content, obj, collumns) {
 	this.table.appendChild(this.tbody)
 
 	if(this.obj.length == 0) {
-		this.tbody.innerHTML = `<h2 nenhum >Nenhum dado foi retornado...</h2>`
+		this.tbody.innerHTML = `<div class="message-no-data">
+									<i class="icofont-search-document icofont-4x"></i>
+									<h3>Nenhum dado foi retornado...</h3>
+								</div>`
 		return
 	}
 
@@ -341,5 +346,14 @@ function search() {
 	let pesquisaTexto = document.querySelector('[search]').value
 	pesquisaItens(pesquisaTexto)
 }
+
+$().ready(function() {
+	$('[search]').on('keydown', function(event) {
+		if(event.keyCode === 13) {
+			search()
+		}	
+	})	
+})
+
 
 pesquisaItens('')
