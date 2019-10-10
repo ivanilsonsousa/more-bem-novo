@@ -9,6 +9,10 @@
 	<link rel="shortcut icon" href="images/icone-logo.png">
 	<link rel="stylesheet" type="text/css" href="css/template-gerenciar.css">
 	<script type="text/javascript" src="scripts/jquery-3.4.1.min.js"></script>
+
+	<!-- <script type="text/javascript" src="scripts/js.js"></script>
+	<script type="text/javascript" src="scripts/funcoes-itens.js"></script> -->
+
 	<script type="text/javascript" src="scripts/funcoes.js"></script>
 </head>
 <header class="cabecalho">
@@ -116,6 +120,7 @@
 		</div>
 		<div class="modal-body">
 		<form id="pop_form_editar" method="POST">
+			<input hidden type="text" name="id">
 			<div class="cols cols2">
 				<div class="campo">
 					<label for="material">Material</label>
@@ -133,7 +138,6 @@
 				</div>
 			</div>
 		</div>
-		<input hidden type="text" name="id">
 		<div class="modal-footer">
 			<button id="enviar"><i class="icofont-check"></i> Sim</button>
 		</form>

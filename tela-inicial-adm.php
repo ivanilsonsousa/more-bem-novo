@@ -79,7 +79,7 @@
 				<p>Gerenciar Ofertas</p>
 			</div>
 		</div>
-		<div class="card">
+		<div class="card" onclick="window.location.href='tela-adm-gerenciar-fornecedores.php';">
 			<div class="simbolo">
 				<img src="images/businessman.svg" alt="">
 			</div>

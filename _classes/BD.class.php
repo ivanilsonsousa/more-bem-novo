@@ -250,6 +250,21 @@ class BD {
 		}
 	}
 
+	public function pesquisarFornecedores($query) {
+		global $pdo;
+		global $msgErro;
+
+		try {
+			$sql = $pdo->prepare("SELECT id, rsocial, cnpj, tel, email FROM fornecedor WHERE rsocial LIKE '%$query%' ORDER BY id DESC");
+			$sql->execute();
+			$dado = $sql->fetchAll(PDO::FETCH_ASSOC);
+			
+			return $dado;
+		} catch (Exception $e) {
+			$msgErro = $e->getMessage();
+		}
+	}
+
 	public function pesquisarItens($query) {
 		global $pdo;
 		global $msgErro;

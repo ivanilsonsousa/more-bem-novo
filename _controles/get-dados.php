@@ -6,12 +6,17 @@
     $id = isset($_GET['id']) ? $_GET['id'] : null;
     $query = isset($_GET['query']) ? $_GET['query'] : null;
 
-    $pesquisa = $bd->pesquisarItens($query);
-
-    if($category == "Item") {
+    if( $category == 'Item' ) {
+        
         $dado = $bd->listarItem($id);
         echo json_encode($dado);
-    } else {
+    } else if( $category == 'Fornecedor' ) {
+        
+        $pesquisa = $bd->pesquisarFornecedores($query);
+        echo json_encode($pesquisa);
+    } else if( isset($query) ) {
+
+        $pesquisa = $bd->pesquisarItens($query);
         echo (json_encode($pesquisa));
         exit; // enquanto testo a funcionalidade
     }

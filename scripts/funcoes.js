@@ -1,4 +1,9 @@
 ﻿/**
+ * Variáveis Globais
+ */ 
+let baseURL = '_controles/'
+
+/**
  * Essa função pega o item selecionado no momento
  * da criação de um novo Orçamento no evento de
  * clique do elemento <select> dentro do fieldset
@@ -119,6 +124,9 @@ function abilitarOption(opcao){
 	}
 }
 
+// ----------------------------------------- NOVO ---------------------------------------------
+
+// Retorna Ano Atual
 function ano(){
 	return new Date().getFullYear()
 }
@@ -129,146 +137,85 @@ function popup(idModal) {
 	let exit = modal.querySelector('[sair]')
 	let cancel = modal.querySelector('[cancelar]')
 
-	// console.log(s)
-
 	modal.style.display = 'block'
 	exit.onclick = () => modal.style.display = 'none'
 	cancel.onclick = () => modal.style.display = 'none'
 	window.onclick = (e) => { if (e.target == modal) modal.style.display = 'none' }
+
+	if ( !!modal.querySelector('input') )
+		modal.querySelector('input').focus()
 }
 
-function editarItem(idItem, idModal) {
-	let modal = document.querySelector(`#${idModal}`)
-	let inputs = modal.querySelectorAll('input')
+function editItem(idItem, idModal, category) {
+	let modal = $(`#${idModal}`)
+	let inputs = modal.find('input')
 	
-	$.ajax({
-		type: "GET",
-		url: "_controles/get-dados.php?category=Item&id=" + idItem,
-		data: {},
-		success: function(data) {
-			let item = JSON.parse(data)
-			inputs[0].value = item.material
-			inputs[1].value = item.marca
-			inputs[2].value = item.medida
-			inputs[3].value = item.id
-			
-			return true
-		}
-	});
-	
-	popup(idModal)	
-	let confirmar = modal.querySelector('#enviar')
-	
-	confirmar.onclick = () => {
-		$('#pop_form_editar').submit(function() {
-			var dados = $(this).serialize();
-			dados += '&acao=Editar'
-			$.ajax({
-				type: 'POST',
-				url: '_controles/processa-acoes-itens.php',
-				data: dados,
-				success: function(data) {
-					window.location.reload()
-					// pesquisaItens('')
-					return true
-				}
-			});
-			
-			return false
-		});
+	//Busca Item baseado no Id
+	$.getJSON(`${baseURL}get-dados.php`, { category: 'Item', id: idItem } ).done( function(data) {
+		console.log(data)
+		Object.values(data).forEach((el, index) => {
+			inputs[index].value = el
+		})
 
-	}
-}
+		return true
+	})
 
-function excluirItem(idItem, idModal) {
 	popup(idModal)
-	let confirmar = document.querySelector(`div[id=${idModal}] > .modal-content > .modal-footer > [confirmar]`)
-	
-	confirmar.onclick = () => {
-		$.ajax({
-			type: "GET",
-			url: "_controles/processa-acoes-itens.php?acao=Apagar&id=" + idItem,
-			data: {},
-			success: function(data) {
-				window.location.reload()
-				// pesquisaItens('')
-				return true
-			}
-		});
-		
+
+	//Atualiza Item
+	$('#pop_form_editar').submit( function() {
+		var dados = $(this).serialize()
+		dados += '&acao=Editar&category=Item'
+
+		$.post( `${baseURL}processa-acoes-itens.php`, dados ).done( function() {
+			$('#pop_form').each( function(){
+				this.reset()
+			})
+
+			modal.css('display', 'none')			
+			updateTable()
+			return true
+		})
+
 		return false
-	}
+	})
+
 }
 
-// Cadastro de Itens Ajax
+// Deletar Item
+function deleteItem(idItem, idModal) {
+	popup(idModal)
+	let confirmar = $(`#${idModal}`).find('[confirmar]')
+
+	confirmar.click( function() {
+		$.get(`${baseURL}processa-acoes-itens.php`, { acao: 'Apagar', id: idItem } ).done( function() {
+			confirmar.closest('.modal').css('display', 'none')			
+			updateTable()
+			return true
+		})
+
+		return false
+	})	
+}
+
+// Cadastro de Item
 $().ready( function() {
 	$('#pop_form').submit( function() {
 		let dados = $(this).serialize()
 
-		$.post( "_controles/processa-cadastro-item.php" , dados ).done( function() {
+		$.post( `${baseURL}processa-cadastro-item.php`, dados ).done( function() {
 			$('#pop_form').each( function(){
 				this.reset()
 			})
 
 			$('#enviar').closest('.modal').css('display', 'none')
-			pesquisaItens('')
+			updateTable()
 			return true
 		})
 		
 		return false
 	})
 })
-
-class TObjectToTable {
-	constructor( content, obj, collumns ){
-		this.obj = obj;
-		this.content = document.getElementsByClassName(content);
-		this.collumns = collumns;
-		this.table = document.createElement("table");
-		this.thead = document.createElement("thead");
-		this.tbody = document.createElement("tbody");
-
-		// get Collumns
-		this.initTable();
-	}
-
-	initTable(){
-		console.log(this.content);
-		this.content[0].appendChild(this.table)
-		this.table.innerHTML = null;
-
-		this.table.appendChild(this.thead)
-		this.table.appendChild(this.tbody)
-		let cabecalho = ''
-		let corpo = ''
-		
-		if (this.collumns != undefined) {
-			for (const value of this.collumns) {
-				cabecalho += '<th>' + value + '</th>';
-			}
-			cabecalho += '<th>Ações</th>';
-			this.thead.innerHTML += cabecalho;
-			this.thead.innerHTML += '</tr>';
-		}
-
-		this.obj.map((e) => {
-			corpo += '<tr>'
-			corpo += '<td>' + e.id + '</td>';
-			corpo += '<td>' + e.material + '</td>';
-			corpo += '<td>' + e.marca + '</td>';
-			corpo += '<td>' + e.medida + '</td>';
-			corpo += `<td>
-						<a onclick='excluirItem("${e.id}","modalExcluir")' title="Apagar" class="bnt"><i id="lixo" class="icofont-trash"></i></a> | <a onclick='editarItem("${e.id}","modalEditar")' title="Editar" class="bnt"><i id="lapis" class="icofont-pencil-alt-5"></i></a>
-					  </td>`
-
-			corpo += '</tr>'
-		})
-		console.log(corpo)
-
-		this.tbody.innerHTML += corpo;
-
-	}
-}
 
 function createTable(content, obj, collumns) {
 	this.obj = obj
@@ -317,7 +264,7 @@ function createTable(content, obj, collumns) {
 		})
 
 		corpo += `<td>
-					<a onclick='excluirItem("${e.id}","modalExcluir")' title="Apagar" class="bnt"><i id="lixo" class="icofont-trash"></i></a> | <a onclick='editarItem("${e.id}","modalEditar")' title="Editar" class="bnt"><i id="lapis" class="icofont-pencil-alt-5"></i></a>
+					<a onclick='deleteItem("${e.id}","modalExcluir")' title="Apagar" class="bnt"><i id="lixo" class="icofont-trash"></i></a> | <a onclick='editItem("${e.id}","modalEditar")' title="Editar" class="bnt"><i id="lapis" class="icofont-pencil-alt-5"></i></a>
 				  </td>`		
 		corpo += '</tr>'
 	})
@@ -325,26 +272,19 @@ function createTable(content, obj, collumns) {
 	this.tbody.innerHTML += corpo
 }
 
-function pesquisaItens(query) {
-	$.ajax({
-		type: "POST",
-		url: "_controles/get-dados.php?query=" + query,
-		data: {},
-		success: function(data) {
-			// new TObjectToTable("tabela", JSON.parse(data), ["ID", "Material", "Marca", "Medida"]);
-			createTable("tabela", JSON.parse(data), ["ID", "Material", "Marca", "Medida"]);
-		},
-		error: function(data) {
-			alert(data)
-		}
-	});
+function updateTable(query='') {
+	$.getJSON(`${baseURL}get-dados.php`, { query: query } ).done( function(data) {
+		createTable("tabela", data, ["ID", "Material", "Marca", "Medida"]);
+
+		return true
+	})
 	
-	return true
+	return false
 }
 
 function search() {
 	let pesquisaTexto = document.querySelector('[search]').value
-	pesquisaItens(pesquisaTexto)
+	updateTable(pesquisaTexto)
 }
 
 $().ready(function() {
@@ -355,5 +295,4 @@ $().ready(function() {
 	})	
 })
 
-
-pesquisaItens('')
+updateTable()

@@ -1,75 +1,175 @@
-<?php
-	require_once "_classes/BD.class.php";
-
-	$bd = new BD();
-	$bd->abrir("meubanco", "localhost", "root", "");
-?>
+<?php require('_classes/conexao.php'); ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
-	<head>
-		<meta charset="UTF-8">
-		<title>Gerenciar Itens</title>
-		<link rel="shortcut icon" href="_imagens/icone.png">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-		<link rel="stylesheet" type='text/css' href="_css/estilo-tela-gerenciar-itens-adm.css">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-		<link rel="stylesheet" type='text/css' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
-		<script type="text/javascript" src="_scripts/funcoes.js"></script>
-	</head>
-	<body>
-
-		<div class="site">
-      <i class="fas fa-cogs fa-4x"></i><i class="fas fa-list-ul fa-2x"></i><br><br>
-			<fieldset id="form-content">
-				<legend>Gerenciar Itens</legend><br>
-        <div id="div-pesquisa" class="blocoIcones">
-          <input class="blocoIcones" type="text" placeholder="Pesquisar...">
-          <button class="blocoIcones"><i class="fas fa-search"></i></button>
-        </div>
-        <div onclick="window.location.href='tela-novo-item.php';" class="botao">
-          <i class="fas fa-plus-circle"></i>
-          <label>Adicionar Item</label>
-        </div>
-			<br><br>
-			<script type="text/javascript"> 
-				let id = () => "texto" 
-			</script>
-			<div class="tabela table-responsive">
-				<table class="tabela table table-hover">
-					<tr>
-						<th>Id</th>
-						<th>Material</th>
-						<th>Marca</th>
-						<th>Unidade de Medida</th>
-						<th>Ações</th>
-					</tr>
-
-					<?php
-						$lista = $bd->listarTodosOsItens();
-
-						while($dado = $lista->fetch(PDO::FETCH_ASSOC)) {?>
-							<tr>
-								<td><?php echo $dado['id'];?></td>
-    							<td><?php echo $dado['material'];?></td>
-    							<td><?php echo $dado['marca'];?></td>
-    							<td><?php echo $dado['medida'];?></td>
-								<td>
-									<!--href="_controles/processa-acoes-itens.php?acao=Apagar&id=<?php //echo $dado['id'];?>" -->
-									<a href='javascript:confirmarApagarItem(<?php echo $dado["id"];?>);' title="Apagar" class "bnt"><i id="lixo" class="fas fa-trash-alt"></i></a>|
-									<a href="_controles/processa-acoes-itens.php?acao=Editar&id=<?php echo $dado['id'];?>" title="Editar" class="bnt"><i id="lapis" class="fas fa-pencil-alt"></i></a>
-								</td>
-							</tr>
-					<?php
-						} ?>
-
-				</table>
-			</div>
-
-			</fieldset>
+<head>
+	<title>Gerenciar Fornecedores | Adm</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="images/icone-logo.png">
+	<link rel="stylesheet" type="text/css" href="css/template-gerenciar.css">
+	<script type="text/javascript" src="scripts/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="scripts/js.js"></script>
+	<script type="text/javascript" src="scripts/funcoes-fornecedores.js"></script>
+</head>
+<header class="cabecalho">
+	<div class="logo">
+		<a href="tela-inicial-adm.php" title="Ir para Home"><img src="images/icone-logo.png" alt="nao carregou"></a>
+	</div>
+	<div class="titulo">
+		<h2><strong>MORE BEM</strong></h2>
+	</div>
+	<div class="dropdown">
+		<button onclick='alert("MENU TOGLLE")' class="menu-toggle">
+			<i class="fa fa-lg fa-bars fa-2x"></i>
+		</button>
+		<!-- <ul>
+			<li>Item1</li>
+		</ul>
+		<ul>
+			<li>Item2</li>
+		</ul>
+		<ul>
+			<li>Item3</li>
+		</ul> -->
+	</div>
+	<nav class="menu">
+		<ul>
+			<li>
+				<a href="#Home">Home</a>
+			</li>
+			<li selecionado>
+				<a href="#">Fornecedores</a>
+			</li>
+			<li>
+				<a href="#sobre">Orçamentos</a>
+			</li>
+			<li>
+				<a href="#contato">Ofertas</a>
+			</li>
+		</ul>
+	</nav>
+	<aside class="autenticacao">
+		<i title="Sair" onclick='popup("modalSair")' id="btnSair" class="icofont-sign-out icofont-2x"></i>
+	</aside>
+</header>
+<body>
+<div class="meio">
+	<div class="conteudo">
+		<div class="div-dados-gerenciar">
+			<img src="images/businessman.svg" alt="Gerenciar Itens">
+			<h1>Gerenciar Fornecedores</h1>
 		</div>
+		<div class="barra-op">
+			<div class="div-pesquisa">
+				<input search type="text" name="pesquisa" placeholder="Pesquisar Fornecedor...">
+				<button onclick='search()'><img src="images/lupa.svg" alt=""></button>
+			</div>
+			<div class="botao">
+				<button id="myBtn" onclick='popup("myModal")'>Validar Forn.<img src="images/business-man-validate.svg" alt=""></button>
+			</div>
+		</div>
+		<div class="tabela">
+			
+		</div> 
+	</div>
+</div>
+</body>
+<!-- Modal Adicionar Item -->
+<div id="myModal" class="modal">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h3 class="titulo"><i class="icofont-box icofont-2x"></i> Adicionar Novo Item</h3>
+			<span sair class="close" title="Fechar"><i class="icofont-close-circled"></i></span>
+		</div>
+		<div class="modal-body">
+		<form id="pop_form" method="POST">
+			<div class="cols cols2">
+				<div class="campo">
+					<label for="material">Material</label>
+					<input type="text" name="material" id="nome">
+				</div>
+				<div class="campo">
+					<label for="marca">Marca</label>
+					<input type="text" name="marca" id="snome">
+				</div>
+			</div>
+			<div class="cols">
+				<div class="campo">
+					<label for="snome">Unidade de Medida</label>
+					<input type="text" name="medida" id="snome">
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button id="enviar"><i class="icofont-check"></i> Sim</button>
+		</form>
+			<button cancelar id="cancel"><i class="icofont-not-allowed"></i> Não</button>
+		</div>
+	</div>
+</div>
+<!-- Modal Editar -->
+<div id="modalEditar" class="modal">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h3 class="titulo"><i class="icofont-box icofont-2x"></i> Editar Item</h3>
+			<span sair class="close" title="Fechar"><i class="icofont-close-circled"></i></span>
+		</div>
+		<div class="modal-body">
+		<form id="pop_form_editar" method="POST">
+			<input hidden type="text" name="id">
+			<div class="cols cols2">
+				<div class="campo">
+					<label for="material">Material</label>
+					<input type="text" name="material" id="nome">
+				</div>
+				<div class="campo">
+					<label for="marca">Marca</label>
+					<input type="text" name="marca" id="snome">
+				</div>
+			</div>
+			<div class="cols">
+				<div class="campo">
+					<label for="snome">Unidade de Medida</label>
+					<input type="text" name="medida" id="snome">
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button id="enviar"><i class="icofont-check"></i> Sim</button>
+		</form>
+			<button cancelar id="cancel"><i class="icofont-not-allowed"></i> Não</button>
+		</div>
+	</div>
+</div>
+<!-- Modal Sair -->
+<div id="modalSair" class="modal">
+	<div class="modal-content modal-alert">
+		<div class="modal-header">
+			<h3 class="titulo"><i class="icofont-question-circle"></i> Deseja realmente sair do Sistema?</h3>
+			<span sair class="close" title="Fechar"><i id="closeSair" class="icofont-close-circled"></i></span>
+		</div>
+		<div class="modal-footer">
+			<button onclick="window.location.href='_controles/sair.php';" id="sair"><i class="icofont-check"></i> Sim</button>
+			<button cancelar id='cancelSair'><i class="icofont-not-allowed"></i> Não</button>
+		</div>
+	</div>
+</div>
+<!-- Modal Excluir -->
+<div id="modalExcluir" class="modal">
+	<div class="modal-content modal-alert">
+		<div class="modal-header">
+			<h3 class="titulo"><i class="icofont-question-circle"></i> Deseja realmente excluir esse Item?</h3>
+			<span sair class="close" title="Fechar"><i id="closeSair" class="icofont-close-circled"></i></span>
+		</div>
+		<div class="modal-footer">
+			<button confirmar><i class="icofont-check"></i> Sim</button>
+			<button cancelar id='cancelSair'><i class="icofont-not-allowed"></i> Não</button>
+		</div>
+	</div>
+</div>
 
-	</body>
+<footer class="rodape">
+	<span>&copy; <script> document.write(ano())</script> Todos os direitos reservados by <strong>Scorpion <i class="icofont-heart"></i>, Inc.</strong></span>
+</footer>
 </html>
