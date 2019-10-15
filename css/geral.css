@@ -2,6 +2,37 @@
 @import url('fonts/styles_alls.css');
 @import url('fonts/styles.css');
 @import url('icofont/icofont.min.css');
+
+@keyframes bounce {
+	0%, 20%, 60%, 100% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	} 
+	40% {
+		-webkit-transform: translateY(-20px);
+		transform: translateY(-20px);
+	}
+	80% {
+		-webkit-transform: translateY(-10px);
+		transform: translateY(-10px);
+	}
+}
+@keyframes createBox {
+	from {
+	  transform: scale(0);
+	}
+	to {
+	  transform: scale(1);
+	}
+}
+@-webkit-keyframes animateTop {
+	from { top:-300px; opacity:0; } 
+	to { top:0; opacity:1; }
+}
+@keyframes animateTop {
+	from { top:-300px; opacity:0; }
+	to { top:0; opacity:1; }
+}
 :root {
 	--azul: #04225a;
 	--azul-sistema: #073999;
@@ -27,6 +58,7 @@ body {
 	display: grid;
 	align-items: center;
 	border-bottom: solid 5px var(--borda-suave);
+	/* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 	border-bottom-left-radius: 8px;
 	border-bottom-right-radius: 8px;
 	grid-template-columns: 10px 10px 1fr 50px;
@@ -48,22 +80,10 @@ body {
 	overflow: hidden;
 }
 .card:hover {
-	transform: translateY(-10px);
-}
-[hoverUp]:hover {
-	background: #f50a31;
-	width: 100%;
-	height: 100%;
-	z-index: 1;
-	animation: hoverCard .5s;
-}
-@-webkit-keyframes hoverCard {
-	from { top:300px; opacity:0; } 
-	to { top:0; opacity:1; }
-}
-@keyframes hoverCard {
-	from { top:300px; opacity:0; }
-	to { top:0; opacity:1; }
+	border-bottom-color: MidnightBlue;
+	color: MidnightBlue;
+	cursor: pointer;
+	fill: MidnightBlue;
 }
 .conteudo {
 	width: 100%;
@@ -137,15 +157,10 @@ body {
 	align-items: center;
 	animation: createBox .5s;
 }
-@keyframes createBox {
-	from {
-	  transform: scale(0);
-	}
-	to {
-	  transform: scale(1);
-	}
-}
 .simbolo img {
+	height: 100px;
+}
+.simbolo svg {
 	height: 100px;
 }
 .autenticacao {
@@ -209,24 +224,15 @@ body {
 	border: none;
 	width: 40%;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-	-webkit-animation-name: animatetop;
+	-webkit-animation-name: animateTop;
 	-webkit-animation-duration: 0.5s;
-	animation-name: animatetop;
+	animation-name: animateTop;
 	animation-duration: 0.4s;
 	border-radius: 5px; 
 }
 .modal-alert {
 	width: 30%;
 	min-width: 400px;
-}
-/* Add Animation */
-@-webkit-keyframes animatetop {
-	from { top:-300px; opacity:0; } 
-	to { top:0; opacity:1; }
-}
-@keyframes animatetop {
-	from { top:-300px; opacity:0; }
-	to { top:0; opacity:1; }
 }
 .modal-header,
 .modal-footer {
@@ -284,8 +290,7 @@ body {
 }
 .close:hover,
 .close:focus {
-	color: black;
-	text-decoration: none;
+	color: steelblue;
 	cursor: pointer;
 }
 .cols {
@@ -334,7 +339,7 @@ body {
 .campo input:focus, 
 .campo select:focus, 
 .campo textarea:focus {
-	background: #FFC;
+	background: #ffc;
 	border: 1px solid black;
 }
 .campo label.checkbox {

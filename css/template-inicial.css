@@ -14,8 +14,7 @@
 	min-width: 200px;
 }
 .card:hover {
-	background-color: #4faddb;
-	cursor: pointer;
+	animation: bounce 1s;
 }
 .opcoes {
 	width: 90%;

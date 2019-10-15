@@ -5,10 +5,11 @@
 	<head>
 		<title>Home</title>
 		<meta charset="utf-8">
-		<link rel="shortcut icon" href="images/icone-logo.png">
+		<link rel="shortcut icon" href="./images/icone-logo.png">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="css/template-inicial.css">
-		<script type="text/javascript" src="scripts/funcoes.js"></script>
+		<script type="text/javascript" src="./scripts/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="./scripts/funcoes.js"></script>
 	</head>
 	<header class="cabecalho">
         <div class="logo">
@@ -57,7 +58,7 @@
 		
 		<div class="card">
 			<div class="simbolo">
-				<img src="images/human-resources.svg" alt="">
+				<img class="svg" src="images/human-resources.svg" alt="">
 			</div>
 			<div class="paragrafo">
 				<p>Gerenciar Usuários</p>
@@ -65,7 +66,7 @@
 		</div>
 		<div class="card">
 			<div class="simbolo">
-				<img src="images/statistics.svg" alt="">
+				<img class="svg" src="images/statistics.svg" alt="">
 			</div>
 			<div class="paragrafo">
 				<p>Gerenciar Orçamentos</p>
@@ -73,7 +74,7 @@
 		</div>
 		<div class="card">
 			<div class="simbolo">
-				<img src="images/analytics.svg" alt="">
+				<img class="svg" src="images/analytics.svg" alt="">
 			</div>
 			<div class="paragrafo">
 				<p>Gerenciar Ofertas</p>
@@ -81,7 +82,7 @@
 		</div>
 		<div class="card" onclick="window.location.href='tela-adm-gerenciar-fornecedores.php';">
 			<div class="simbolo">
-				<img src="images/businessman.svg" alt="">
+				<img class="svg" src="images/businessman.svg" alt="">
 			</div>
 			<div class="paragrafo">
 				<p>Gerenciar Fornecedores</p>
@@ -89,7 +90,7 @@
 		</div>
 		<div class="card">
 			<div class="simbolo">
-				<img src="images/chat.svg" alt="">
+				<img class="svg" src="images/chat.svg" alt="">
 			</div>
 			<div class="paragrafo">
 				<p>Gerenciar Mensagens</p>
@@ -97,12 +98,11 @@
 		</div>
 		<div class="card" onclick="window.location.href='tela-adm-gerenciar-itens.php';">
 			<div class="simbolo">
-				<img src="images/production.svg" alt="">
+				<img class="svg" src="images/production.svg" alt="">
 			</div>
 			<div class="paragrafo">
 				<p>Gerenciar Itens</p>
 			</div>
-			<div hoverUp></div>
 		</div>
 		
 	</div>
@@ -123,25 +123,6 @@
 	</div>
 </div>
 <footer class="rodape">
-		<span>&#169; <script> document.write(ano())</script> Todos os direitos reservados by <strong>Scorpion <i class="icofont-heart"></i>, Inc.</strong></span>
+		<span>&copy; <script> document.write(ano())</script> Todos os direitos reservados by <strong>Scorpion <i class="icofont-heart"></i>, Inc.</strong></span>
 </footer>
 </html>
-
-<?php
-//  session_start();
-//  if (!isset($_SESSION['id'])) {
-//    header("location: index.php");
-//    exit;
-//  }
-//  
-//  require_once "_classes/BD.class.php";
-//  $bd = new BD();
-//  $bd->abrir("meubanco", "localhost", "root", "");
-//
-//  $id = $_SESSION['id'];
-//
-//  $dado = $bd->listarUsuario("1");
-//	
-//  $user = $dado['nome'];
-?>
-
