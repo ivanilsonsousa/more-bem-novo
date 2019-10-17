@@ -12,9 +12,10 @@
 	max-width: 320px;
 	max-height: 320px;
 	min-width: 200px;
+	animation: fade 1s;
 }
 .card:hover {
-	animation: bounce 1s;
+	animation: bounce 1s, fade paused;
 }
 .opcoes {
 	width: 90%;

@@ -17,6 +17,10 @@
         <div class="titulo">
 			<h2><strong>MORE BEM</strong></h2>
 		</div>
+		<div class="acoes">
+			<h2>É um fornecedor? </h2>
+			<i class="icofont-business-man icofont-2x"></i>
+		</div>
     </header>
 	<div class="meio">
 		<div class="conteudo">
@@ -43,6 +47,39 @@
 			</div>
 		</div>
 	</div>
+
+<script type="text/javascript">
+	/*const formulario = document.querySelector('.formulario')
+	const botao = document.querySelector('button[type=submit]')
+	
+	botao.onclick = (e) => {
+		e.preventDefault()
+		
+		const fields = [...document.querySelectorAll('input')]
+		
+		const t = [...document.querySelectorAll('input')]
+
+		fields.forEach(field => {
+			if (field.value == '') {
+				formulario.classList.add('validate-error')
+				field.style.borderBottomColor = 'red'
+				field.onkeyup  = () => field.style.borderBottomColor = 'SlateBlue'
+			}
+		})
+
+		const formError = document.querySelector('.validate-error')
+	
+		if (formError) {
+			formError.addEventListener('animationend', e => {
+				if (e.animationName == 'nono') {
+					formError.classList.remove('validate-error')
+				}	
+			})
+		}
+	}
+	*/
+</script>
+
 	<footer class="rodape">
 		<span>&copy; <script> document.write(ano())</script> Todos os direitos reservados by <strong>Scorpion <i class="icofont-heart"></i>, Inc.</strong></span>
 	</footer>

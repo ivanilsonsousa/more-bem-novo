@@ -157,3 +157,4 @@ $().ready(function() {
 })
 
 updateTable(query, category)
+

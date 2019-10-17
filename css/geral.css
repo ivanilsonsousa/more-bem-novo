@@ -17,6 +17,26 @@
 		transform: translateY(-10px);
 	}
 }
+@keyframes nono {
+	0% {
+		transform: translateX(0);
+	}
+	25% {
+		transform: translateX(-20%);
+	}
+	75% {
+		transform: translateX(20%);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+.validate-error {
+	animation: nono 250ms;
+}
+.void-input {
+	border-bottom-color: darkred;
+}
 @keyframes createBox {
 	from {
 	  transform: scale(0);
@@ -32,6 +52,26 @@
 @keyframes animateTop {
 	from { top:-300px; opacity:0; }
 	to { top:0; opacity:1; }
+}
+@keyframes fade {
+	from {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+@keyframes move {
+	from {
+		opacity: 0;
+		transform: translateX(-35%);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0%);
+	}
 }
 :root {
 	--azul: #04225a;
