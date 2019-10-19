@@ -68,7 +68,7 @@
 	}
 	.botao {
 		width: 50px;
-	}
+  }
 }
 @media(max-width: 900px) {
 	.modal-content {

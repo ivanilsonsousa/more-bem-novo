@@ -9,7 +9,12 @@
     padding: 0 20px;
 }
 .cabecalho .acoes h2 {
+    margin-left: 5px;
     font-size: 14px;
+}
+.cabecalho .acoes:hover {
+    opacity: 0.8;
+    cursor: pointer;
 }
 .conteudo{
     border: none;
@@ -18,7 +23,6 @@
 }
 .formulario {
     overflow: hidden;
-    padding-left: 10px;
 }
 .formulario > form{
     font-weight: bold;
@@ -27,8 +31,6 @@
     grid-template-rows: 50px, 25px, 25px, 70px;
     width: 300px;
     height: 250px;
-    position: relative;
-    right: 12px;
     border-radius: 5px;
     animation: fade 1s;
 }
@@ -128,9 +130,15 @@
 }
 @media(max-width: 850px) {
 	.logo.logo-principal{
-        display: none;
-    }
-    .formulario > form {
-        right: 0;
-    }
+    display: none;
+  }
+  .conteudo {
+    padding: 0;
+    margin: 3px;
+    height: 100%;
+    overflow: hidden;
+  }
+  .rodape {
+    font-size: 10pt;
+  }
 }

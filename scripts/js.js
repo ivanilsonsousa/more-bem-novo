@@ -1,5 +1,3 @@
-
-
 // Retorna Ano Atual
 function ano(){
 	return new Date().getFullYear()
@@ -32,6 +30,7 @@ function popup(idModal) {
 		modal.querySelector('input').focus()
 }
 
+//Monitora a pesquisa no input
 $().ready(function() {
 	$('[search]').on('keydown', function(event) {
 		if(event.keyCode === 13) {
@@ -40,3 +39,65 @@ $().ready(function() {
 	})	
 })
 
+class TObjectToTable {
+	constructor( content, obj, collumns ){
+    this.obj = obj
+    this.collumns = collumns
+    this.content = document.getElementsByClassName(content)
+    
+    this.initTable()
+	}
+  
+	initTable(){
+    this.table = document.querySelector("table") ? document.querySelector("table") : document.createElement("table")
+    this.thead = document.querySelector("thead") ? document.querySelector("thead") : document.createElement("thead")
+    this.tbody = document.querySelector("tbody") ? document.querySelector("tbody") : document.createElement("tbody")
+    
+    this.content[0].appendChild(this.table)
+    this.table.innerHTML = ''
+    this.thead.innerHTML = ''
+    this.tbody.innerHTML = ''
+
+    this.table.appendChild(this.thead)
+    this.table.appendChild(this.tbody)
+
+    if(this.obj.length == 0) {
+      this.tbody.innerHTML = `<div class="message-no-data">
+                                <i class="icofont-search-document icofont-4x"></i>
+                                <h3>Nenhum dado foi retornado...</h3>
+                              </div>`
+      return
+    }
+
+    this.cabecalho = ''
+    this.corpo = ''
+    
+    if ( this.collumns.length == Object.keys(this.obj[0]).length ) {
+      this.collumns.forEach((e) => {
+        this.cabecalho += '<th>' + e + '</th>'
+      })
+    } else { 
+      Object.keys(this.obj[0]).forEach((e) => {
+        this.cabecalho += '<th>' + e + '</th>'
+      })
+    }
+
+    this.cabecalho += '<th>Ações</th>'
+    this.thead.innerHTML += this.cabecalho
+    this.thead.innerHTML += '</tr>'
+
+    this.obj.forEach((e) => {
+      Object.values(e).forEach((el) => {
+        this.corpo += '<td>' + el + '</td>'
+      })
+
+      this.corpo += `<td>
+                      <a onclick='deleteItem("${e.id}","modalExcluir")' title="Apagar" class="bnt"><i id="lixo" class="icofont-trash"></i></a> | <a onclick='editItem("${e.id}","modalEditar")' title="Editar" class="bnt"><i id="lapis" class="icofont-pencil-alt-5"></i></a>
+                    </td>`		
+      this.corpo += '</tr>'
+    })
+
+    this.tbody.innerHTML += this.corpo
+  }
+  
+}
