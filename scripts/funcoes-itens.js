@@ -89,21 +89,7 @@ function updateTable(query='') {
 	return false
 }
 
-function search() {
-	let query = document.querySelector('[search]').value
-	updateTable(query)
-}
-
-$().ready(function() {
-	$('[search]').on('keydown', function(event) {
-		if(event.keyCode === 13) {
-			search()
-		}	
-	})	
-})
-
 updateTable()
-
 
 //descontinuada
 function createTable(content, obj, collumns) {

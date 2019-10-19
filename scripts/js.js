@@ -30,6 +30,11 @@ function popup(idModal) {
 		modal.querySelector('input').focus()
 }
 
+function search() {
+  let query = document.querySelector('[search]').value
+  updateTable(query)
+}
+
 //Monitora a pesquisa no input
 $().ready(function() {
 	$('[search]').on('keydown', function(event) {
